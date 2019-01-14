@@ -65,6 +65,20 @@ class UserFriendController: UITableViewController {
       return cell
     }
 
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "FriendInfo" {
+      // segue destination source - куда/откуда передаем данные
+      let friendImageController = segue.destination as! FriendImageController
+      let userFriendController = segue.source as! UserFriendController
+      
+      // определяем выбранного пользователя, отправляем Структуру Friend в коллекцию через массив
+      if let indexPath = userFriendController.tableView.indexPathForSelectedRow {
+        let selectedFriend = userFriendController.friendList[indexPath.row]
+        friendImageController.selectedFriend = [selectedFriend]
+      }
+      
+    }
+  }
 
     /*
     // Override to support conditional editing of the table view.

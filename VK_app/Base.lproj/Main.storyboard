@@ -336,7 +336,7 @@
                                 <connections>
                                     <outlet property="userFriendImage" destination="dB8-MS-haz" id="pl5-BL-Q3F"/>
                                     <outlet property="userFriendLabel" destination="nNQ-lK-Xqe" id="SOv-N2-CDn"/>
-                                    <segue destination="I9M-W3-60I" kind="show" id="PqH-Mf-KMB"/>
+                                    <segue destination="I9M-W3-60I" kind="show" identifier="FriendInfo" id="PqH-Mf-KMB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -384,6 +384,9 @@
                                     <constraint firstAttribute="bottom" secondItem="kiq-dQ-zFI" secondAttribute="bottom" id="LI0-zq-GSm"/>
                                     <constraint firstItem="kiq-dQ-zFI" firstAttribute="leading" secondItem="lGE-aJ-9uz" secondAttribute="leading" id="z4m-LA-t0a"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="friendImage" destination="kiq-dQ-zFI" id="Emb-fg-F9y"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
