@@ -24,5 +24,30 @@ class UserFriendCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+
+    userFriendImage.backgroundColor = UIColor.clear
+    userFriendImage.layer.shadowColor = UIColor.black.cgColor
+    userFriendImage.layer.shadowOffset = CGSize.zero
+    userFriendImage.layer.shadowRadius = 8
+    userFriendImage.layer.shadowOpacity = 0.5
+    userFriendImage.layer.masksToBounds = false
+    
+    let borderView = UIView()
+    borderView.frame = userFriendImage.bounds
+    borderView.layer.cornerRadius = 22
+    borderView.layer.borderColor = UIColor.black.cgColor
+    borderView.layer.borderWidth = 0.1
+    borderView.layer.masksToBounds = true
+    userFriendImage.addSubview(borderView)
+
+    let photoView = UIImageView()
+    //photoView.image = userFriendImage.image
+    photoView.frame = borderView.bounds
+    borderView.addSubview(photoView)
+    
+  }
 
 }
