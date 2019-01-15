@@ -290,14 +290,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qx0-EB-WCf">
-                                            <rect key="frame" x="12" y="0.0" width="44" height="44"/>
+                                            <rect key="frame" x="12" y="0.0" width="44" height="43.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="0Cu-hh-lAM"/>
+                                                <constraint firstAttribute="height" priority="999" constant="44" id="0Cu-hh-lAM"/>
                                                 <constraint firstAttribute="width" constant="44" id="Py8-lP-ZnV"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbv-XX-02O">
-                                            <rect key="frame" x="68" y="11" width="279" height="21"/>
+                                            <rect key="frame" x="68" y="11" width="279" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -348,14 +348,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dB8-MS-haz">
-                                            <rect key="frame" x="12" y="0.0" width="44" height="44"/>
+                                            <rect key="frame" x="12" y="0.0" width="44" height="43.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="75I-g5-D0I"/>
-                                                <constraint firstAttribute="height" constant="44" id="uhW-pl-yOM"/>
+                                                <constraint firstAttribute="height" priority="999" constant="44" id="uhW-pl-yOM"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNQ-lK-Xqe">
-                                            <rect key="frame" x="68" y="11" width="295" height="20.5"/>
+                                            <rect key="frame" x="68" y="11" width="295" height="32.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
