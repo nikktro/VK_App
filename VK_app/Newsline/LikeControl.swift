@@ -40,10 +40,10 @@ import UIKit
   }
   
   private func setupView() {
-    likeButton.setImage(UIImage(named: isLiked == true ? "liked" : "not liked"), for: .normal)
+    likeButton.setImage(UIImage(named: isLiked == true ? "liked" : "notLiked"), for: .normal)
     likeButton.addTarget(self, action: #selector(likeAction), for: .touchUpInside)
-    likeView.backgroundColor = .green
-    self.addSubview(likeButton)
+    //likeView.backgroundColor = .green
+    self.addSubview(likeView)
     self.likeView.addSubview(likeButton)
     self.likeView.addSubview(likeLabel)
   }
