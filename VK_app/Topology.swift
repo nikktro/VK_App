@@ -15,6 +15,8 @@ struct Group {
 }
 
 struct Friend {
+  let id: Int
   let name: String
+  let surname: String
   let image: UIImage?
 }

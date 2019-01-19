@@ -12,22 +12,22 @@ import UIKit
 class UserFriendController: UITableViewController {
 
     var friendList = [
-      Friend(name: "Анастасия Коваль", image: UIImage(named: "userAnastasia")),
-      Friend(name: "Андрей Киселев", image: UIImage(named: "userAndrey")),
-      Friend(name: "Евгений Романенко", image: UIImage(named: "userEvgene")),
-      Friend(name: "Илья Кукушкин", image: UIImage(named: "userIlya")),
-      Friend(name: "Карина Станиславовна", image: UIImage(named: "userKarina")),
-      Friend(name: "Сергей Литаровский", image: UIImage(named: "userSergey")),
-      Friend(name: "Anastasiya Shafir", image: UIImage(named: "userAnastasias")),
-      Friend(name: "Василиса Петрушина", image: UIImage(named: "userVasilisa")),
-      Friend(name: "Anton Darensky", image: UIImage(named: "userAnton")),
-      Friend(name: "Виолетта Лолуа", image: UIImage(named: "userVioletta")),
-      Friend(name: "Анатолий Зубов", image: UIImage(named: "userAnatoly")),
-      Friend(name: "Ксения Журавлева", image: UIImage(named: "userKsenia")),
-      Friend(name: "Давид Выгодчиков", image: UIImage(named: "userDavid")),
-      Friend(name: "Алексей Петренко", image: UIImage(named: "userAlexey")),
-      Friend(name: "Максим Левшин", image: UIImage(named: "userMaxim")),
-      Friend(name: "Дмитрий Нестеренко", image: UIImage(named: "userDmitry"))
+      Friend(id: 1, name: "Анастасия", surname: "Коваль", image: UIImage(named: "userAnastasia")),
+      Friend(id: 2, name: "Андрей", surname: "Киселев", image: UIImage(named: "userAndrey")),
+      Friend(id: 3, name: "Евгений", surname: "Романенко", image: UIImage(named: "userEvgene")),
+      Friend(id: 4, name: "Илья", surname: "Кукушкин", image: UIImage(named: "userIlya")),
+      Friend(id: 5, name: "Карина", surname: "Станиславовна", image: UIImage(named: "userKarina")),
+      Friend(id: 6, name: "Сергей", surname: "Литаровский", image: UIImage(named: "userSergey")),
+      Friend(id: 7, name: "Anastasiya", surname: "Shafir", image: UIImage(named: "userAnastasias")),
+      Friend(id: 8, name: "Василиса", surname: "Петрушина", image: UIImage(named: "userVasilisa")),
+      Friend(id: 9, name: "Anton", surname: "Darensky", image: UIImage(named: "userAnton")),
+      Friend(id: 10, name: "Виолетта", surname: "Лолуа", image: UIImage(named: "userVioletta")),
+      Friend(id: 11, name: "Анатолий", surname: "Зубов", image: UIImage(named: "userAnatoly")),
+      Friend(id: 12, name: "Ксения", surname: "Журавлева", image: UIImage(named: "userKsenia")),
+      Friend(id: 13, name: "Давид", surname: "Выгодчиков", image: UIImage(named: "userDavid")),
+      Friend(id: 14, name: "Алексей", surname: "Петренко", image: UIImage(named: "userAlexey")),
+      Friend(id: 15, name: "Максим", surname: "Левшин", image: UIImage(named: "userMaxim")),
+      Friend(id: 16, name: "Дмитрий", surname: "Нестеренко", image: UIImage(named: "userDmitry"))
     ]
   
   
@@ -39,12 +39,12 @@ class UserFriendController: UITableViewController {
       
       // Генерация Букв и Списка пользователей
       for human in friendList {
-        let userKey = String(human.name.prefix(1))
+        let userKey = String(human.surname.prefix(1))
         if var humanValues = userDictionary[userKey] {
-          humanValues.append(human.name)
+          humanValues.append(human.name + " " + human.surname)
           userDictionary[userKey] = humanValues
         } else {
-          userDictionary[userKey] = [human.name]
+          userDictionary[userKey] = [human.name + " " + human.surname]
         }
       }
       // сортировака букв пользователей
@@ -85,7 +85,7 @@ class UserFriendController: UITableViewController {
         
         // ищем аватарку по имени
         for item in friendList {
-          if item.name == userValues[indexPath.row] {
+          if (item.name + " " + item.surname) == userValues[indexPath.row] {
             cell.userFriendImage.image = item.image
           }
         }
