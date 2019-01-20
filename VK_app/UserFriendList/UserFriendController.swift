@@ -100,9 +100,14 @@ class UserFriendController: UITableViewController {
       let userFriendController = segue.source as! UserFriendController
       
       // определяем выбранного пользователя, отправляем Структуру Friend в коллекцию через массив
-      if let indexPath = userFriendController.tableView.indexPathForSelectedRow {
-        let selectedFriend = userFriendController.friendList[indexPath.row]
-        friendImageController.selectedFriend = [selectedFriend]
+      // получаем indexPath.section, indexPath.row, находим имя друга, отправляем его струтуру
+      guard let indexPath = userFriendController.tableView.indexPathForSelectedRow else { return }
+      guard let userValues = userDictionary[userSectionTitles[indexPath.section]] else { return }
+      for selectedFriend in friendList {
+        if (selectedFriend.name + " " + selectedFriend.surname) == userValues[indexPath.row] {
+          friendImageController.selectedFriend = [selectedFriend]
+        }
+        
       }
       
     }
