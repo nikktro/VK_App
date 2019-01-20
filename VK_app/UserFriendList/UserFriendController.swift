@@ -42,6 +42,7 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
       searchBar.delegate = self
       searchFriendList = friendList
       userDictionaryAndHeader()
+      tableView.keyboardDismissMode = .onDrag // скрываем клавиатуру при скролле
     }
   
 
@@ -52,10 +53,10 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
     for human in searchFriendList {
       let userKey = String(human.surname.prefix(1))
       if var humanValues = userDictionary[userKey] {
-        humanValues.append(human.name + " " + human.surname)
+        humanValues.append(human.surname + " " + human.name)
         userDictionary[userKey] = humanValues
       } else {
-        userDictionary[userKey] = [human.name + " " + human.surname]
+        userDictionary[userKey] = [human.surname + " " + human.name]
       }
     }
     
@@ -122,7 +123,7 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
         
         // ищем аватарку по имени
         for item in searchFriendList {
-          if (item.name + " " + item.surname) == userValues[indexPath.row] {
+          if (item.surname + " " + item.name) == userValues[indexPath.row] {
             cell.userFriendImage.image = item.image
           }
         }
@@ -143,7 +144,7 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
       guard let indexPath = userFriendController.tableView.indexPathForSelectedRow else { return }
       guard let userValues = userDictionary[userSectionTitles[indexPath.section]] else { return }
       for selectedFriend in searchFriendList {
-        if (selectedFriend.name + " " + selectedFriend.surname) == userValues[indexPath.row] {
+        if (selectedFriend.surname + " " + selectedFriend.name) == userValues[indexPath.row] {
           friendImageController.selectedFriend = [selectedFriend]
         }
         
