@@ -72,7 +72,6 @@ class AvailGroupController: UITableViewController, UISearchBarDelegate {
     groupSearchList = groupList.filter({ group -> Bool in
       return group.name.lowercased().contains(searchText.lowercased())
     })
-    print(groupSearchList)
     tableView.reloadData()
     
   }
