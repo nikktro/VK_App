@@ -76,17 +76,17 @@
 		A085AEA621D21B04008F6E4F /* VK_app */ = {
 			isa = PBXGroup;
 			children = (
+				A085AEAB21D21B04008F6E4F /* Main.storyboard */,
+				A085AEB021D21B05008F6E4F /* LaunchScreen.storyboard */,
+				A085AEA721D21B04008F6E4F /* AppDelegate.swift */,
+				A08D67E521D611A400B0943B /* Topology.swift */,
+				A0AF3E4521F6BD22007B25C0 /* LoginForm */,
 				A0F4D22021ED40B40041CB05 /* Newsline */,
 				A0C382B021D582FB00FA3250 /* UserFriendList */,
 				A08D67D821D5907900B0943B /* CollectionView */,
 				A08D67CF21D5886700B0943B /* UserGroupList */,
 				A0C382B221D5835000FA3250 /* AvailGroupList */,
-				A085AEA721D21B04008F6E4F /* AppDelegate.swift */,
-				A085AEB921D2220D008F6E4F /* LoginFormController.swift */,
-				A08D67E521D611A400B0943B /* Topology.swift */,
-				A085AEAB21D21B04008F6E4F /* Main.storyboard */,
 				A085AEAE21D21B05008F6E4F /* Assets.xcassets */,
-				A085AEB021D21B05008F6E4F /* LaunchScreen.storyboard */,
 				A085AEB321D21B05008F6E4F /* Info.plist */,
 			);
 			path = VK_app;
@@ -108,6 +108,14 @@
 				A08D67DB21D5911200B0943B /* FriendImageCell.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		A0AF3E4521F6BD22007B25C0 /* LoginForm */ = {
+			isa = PBXGroup;
+			children = (
+				A085AEB921D2220D008F6E4F /* LoginFormController.swift */,
+			);
+			path = LoginForm;
 			sourceTree = "<group>";
 		};
 		A0C382B021D582FB00FA3250 /* UserFriendList */ = {

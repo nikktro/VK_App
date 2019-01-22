@@ -9,7 +9,7 @@
 import UIKit
 
 class UserFriendCell: UITableViewCell {
-
+  
   @IBOutlet weak var userFriendImage: UIImageView! {
     didSet {
       userFriendImage.backgroundColor = UIColor.clear
@@ -48,17 +48,17 @@ class UserFriendCell: UITableViewCell {
     userFriendLabel.text = nil
   }
   
-
-//  override func layoutSubviews() {
-//    super.layoutSubviews()
-//    
-//  }
-
+  
+  //  override func layoutSubviews() {
+  //    super.layoutSubviews()
+  //
+  //  }
+  
   
   // заполнение аватарки и имени
   func configure(name: String, avatar: UIImage) {
     userFriendLabel.text = name
     userFriendImage.image = avatar
   }
-
+  
 }
