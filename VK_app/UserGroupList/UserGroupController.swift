@@ -58,9 +58,8 @@ class UserGroupController: UITableViewController {
     
     // получаем индекс выделенной ячейки
     if let indexPath = availGroupController.tableView.indexPathForSelectedRow {
-      // получаем группу по индексу
-      let group = availGroupController.groupList[indexPath.row]
-      print(group)
+      // получаем группу по индексу // через массив groupSearchList
+      let group = availGroupController.groupSearchList[indexPath.row]
       
       // добавляем группу в список пользовательских групп
       // Фильтр на добавление уже существующей группы

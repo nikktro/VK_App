@@ -9,7 +9,9 @@
 import UIKit
 
 
-class AvailGroupController: UITableViewController {
+class AvailGroupController: UITableViewController, UISearchBarDelegate {
+  
+  @IBOutlet weak var groupSearchBar: UISearchBar!
   
   var groupList = [
     Group(name: "C#", image: UIImage(named: "groupCsharp")),
@@ -20,9 +22,13 @@ class AvailGroupController: UITableViewController {
     Group(name: "Swift", image: UIImage(named: "groupSwift"))
   ]
   
+  var groupSearchList = [Group]()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    groupSearchBar.delegate = self
+    groupSearchList = groupList
+    tableView.keyboardDismissMode = .onDrag // скрываем клавиатуру при скролле
   }
   
   // MARK: - Table view data source
@@ -34,7 +40,7 @@ class AvailGroupController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return groupList.count
+    return groupSearchList.count
   }
   
   
@@ -43,7 +49,7 @@ class AvailGroupController: UITableViewController {
     // получаем ячейку из пула
     let cell = tableView.dequeueReusableCell(withIdentifier: "AvailGroup", for: indexPath) as! AvailGroupCell
     // получаем группу
-    let group = groupList[indexPath.row]
+    let group = groupSearchList[indexPath.row]
     // устанавливаем группу в надпись ячейки и аватарку
     cell.userGroupLabel.text = group.name
     cell.userGroupImage.image = group.image
@@ -51,5 +57,24 @@ class AvailGroupController: UITableViewController {
     return cell
   }
   
+  
+  // SearchBar
+  func searchBar(_ groupSearchBar: UISearchBar, textDidChange searchText: String) {
+
+    // очищаем фильтр, если запрос пустой
+    guard !searchText.isEmpty else {
+      groupSearchList = groupList
+      tableView.reloadData()
+      return
+    }
+    
+    // фильтр по lowercase
+    groupSearchList = groupList.filter({ group -> Bool in
+      return group.name.lowercased().contains(searchText.lowercased())
+    })
+    print(groupSearchList)
+    tableView.reloadData()
+    
+  }
   
 }
