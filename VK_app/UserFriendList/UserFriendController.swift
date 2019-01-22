@@ -45,7 +45,86 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
       tableView.keyboardDismissMode = .onDrag // скрываем клавиатуру при скролле
     }
   
+  
+    // MARK: - Table view data source
 
+    // создание секций
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return userSectionTitles.count
+    }
+
+  
+    // создание строк
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+    
+      let userKey = userSectionTitles[section]
+      if let userValues = userDictionary[userKey] {
+        return userValues.count
+      }
+      
+      return 0
+      
+    }
+  
+
+    // заполнение ячеек
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      // получаем ячейку из пула
+      let cell = tableView.dequeueReusableCell(withIdentifier: "UserFriends", for: indexPath) as! UserFriendCell
+    
+      // устанавливаем друга в надпись
+      let userKey = userSectionTitles[indexPath.section]
+      if let userValues = userDictionary[userKey] {
+        //cell.userFriendLabel.text = userValues[indexPath.row] // now use function configure instead
+        
+        // ищем аватарку по имени
+        for item in searchFriendList {
+          if (item.surname + " " + item.name) == userValues[indexPath.row] {
+            //cell.userFriendImage.image = item.image // now use function configure instead
+            cell.configure(name: userValues[indexPath.row], avatar: item.image!)
+          }
+        }
+      }
+      return cell
+    }
+
+  
+  // Переход к пользователю
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "FriendInfo" {
+      // segue destination source - куда/откуда передаем данные
+      let friendImageController = segue.destination as! FriendImageController
+      let userFriendController = segue.source as! UserFriendController
+      
+      // определяем выбранного пользователя, отправляем Структуру Friend в коллекцию через массив
+      // получаем indexPath.section, indexPath.row, находим имя друга, отправляем его струтуру
+      guard let indexPath = userFriendController.tableView.indexPathForSelectedRow else { return }
+      guard let userValues = userDictionary[userSectionTitles[indexPath.section]] else { return }
+      for selectedFriend in searchFriendList {
+        if (selectedFriend.surname + " " + selectedFriend.name) == userValues[indexPath.row] {
+          friendImageController.selectedFriend = [selectedFriend]
+        }
+        
+      }
+      
+    }
+  }
+  
+  
+  // Буквы быстрого перехода
+  override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+    if searchFriendList.count == friendList.count { return userSectionTitles } else { return nil }
+  }
+  
+  
+  // Буквы заголовка
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    if searchFriendList.count == friendList.count { return String(userSectionTitles[section]) } else { return nil }
+  }
+  
+  
   // Генерация Букв Поиска и Списка пользователей
   func userDictionaryAndHeader() {
     userDictionary.removeAll()
@@ -85,84 +164,6 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
     userDictionaryAndHeader()
     tableView.reloadData()
     
-  }
-  
-  
-    // MARK: - Table view data source
-
-    // создание секций
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return userSectionTitles.count
-    }
-
-  
-    // создание строк
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-    
-      let userKey = userSectionTitles[section]
-      if let userValues = userDictionary[userKey] {
-        return userValues.count
-      }
-      
-      return 0
-      
-    }
-  
-
-    // заполнение ячеек
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      // получаем ячейку из пула
-      let cell = tableView.dequeueReusableCell(withIdentifier: "UserFriends", for: indexPath) as! UserFriendCell
-    
-      // устанавливаем друга в надпись
-      let userKey = userSectionTitles[indexPath.section]
-      if let userValues = userDictionary[userKey] {
-        cell.userFriendLabel.text = userValues[indexPath.row]
-        
-        // ищем аватарку по имени
-        for item in searchFriendList {
-          if (item.surname + " " + item.name) == userValues[indexPath.row] {
-            cell.userFriendImage.image = item.image
-          }
-        }
-      }
-      return cell
-    }
-
-  
-  // Переход к пользователю
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "FriendInfo" {
-      // segue destination source - куда/откуда передаем данные
-      let friendImageController = segue.destination as! FriendImageController
-      let userFriendController = segue.source as! UserFriendController
-      
-      // определяем выбранного пользователя, отправляем Структуру Friend в коллекцию через массив
-      // получаем indexPath.section, indexPath.row, находим имя друга, отправляем его струтуру
-      guard let indexPath = userFriendController.tableView.indexPathForSelectedRow else { return }
-      guard let userValues = userDictionary[userSectionTitles[indexPath.section]] else { return }
-      for selectedFriend in searchFriendList {
-        if (selectedFriend.surname + " " + selectedFriend.name) == userValues[indexPath.row] {
-          friendImageController.selectedFriend = [selectedFriend]
-        }
-        
-      }
-      
-    }
-  }
-  
-  
-  // Буквы быстрого перехода
-  override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-    if searchFriendList.count == friendList.count { return userSectionTitles } else { return nil }
-  }
-  
-  
-  // Буквы заголовка
-  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    if searchFriendList.count == friendList.count { return String(userSectionTitles[section]) } else { return nil }
   }
 
 }
