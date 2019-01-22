@@ -23,7 +23,7 @@ import UIKit
     let label = UILabel()
     label.textColor = UIColor.black
     label.textAlignment = .center
-    label.font = UIFont.systemFont(ofSize: 32.0)
+    label.font = UIFont.systemFont(ofSize: 17.0)
     label.text = String(counter)
     return label
   }()
