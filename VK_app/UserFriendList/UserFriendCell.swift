@@ -48,6 +48,13 @@ class UserFriendCell: UITableViewCell {
     userFriendLabel.text = nil
   }
   
+
+//  override func layoutSubviews() {
+//    super.layoutSubviews()
+//    
+//  }
+
+  
   // заполнение аватарки и имени
   func configure(name: String, avatar: UIImage) {
     userFriendLabel.text = name
