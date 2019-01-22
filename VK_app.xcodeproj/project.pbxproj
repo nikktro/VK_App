@@ -21,8 +21,9 @@
 		A08D67E221D593F200B0943B /* AvailGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08D67E121D593F200B0943B /* AvailGroupController.swift */; };
 		A08D67E421D5940900B0943B /* AvailGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08D67E321D5940900B0943B /* AvailGroupCell.swift */; };
 		A08D67E621D611A400B0943B /* Topology.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08D67E521D611A400B0943B /* Topology.swift */; };
+		A0AF3E4721F6C238007B25C0 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF3E4621F6C238007B25C0 /* NewsTableViewController.swift */; };
+		A0AF3E4921F6C28F007B25C0 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF3E4821F6C28F007B25C0 /* NewsTableViewCell.swift */; };
 		A0EB4CF821ED170700BBF079 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EB4CF721ED170700BBF079 /* LikeControl.swift */; };
-		A0F4D22221ED40F50041CB05 /* NewslineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4D22121ED40F50041CB05 /* NewslineController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +43,9 @@
 		A08D67E121D593F200B0943B /* AvailGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailGroupController.swift; sourceTree = "<group>"; };
 		A08D67E321D5940900B0943B /* AvailGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailGroupCell.swift; sourceTree = "<group>"; };
 		A08D67E521D611A400B0943B /* Topology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topology.swift; sourceTree = "<group>"; };
+		A0AF3E4621F6C238007B25C0 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		A0AF3E4821F6C28F007B25C0 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		A0EB4CF721ED170700BBF079 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
-		A0F4D22121ED40F50041CB05 /* NewslineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewslineController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,8 +141,9 @@
 		A0F4D22021ED40B40041CB05 /* Newsline */ = {
 			isa = PBXGroup;
 			children = (
-				A0F4D22121ED40F50041CB05 /* NewslineController.swift */,
 				A0EB4CF721ED170700BBF079 /* LikeControl.swift */,
+				A0AF3E4621F6C238007B25C0 /* NewsTableViewController.swift */,
+				A0AF3E4821F6C28F007B25C0 /* NewsTableViewCell.swift */,
 			);
 			path = Newsline;
 			sourceTree = "<group>";
@@ -221,9 +224,10 @@
 				A08D67E621D611A400B0943B /* Topology.swift in Sources */,
 				A08D67E021D591A200B0943B /* UserGroupCell.swift in Sources */,
 				A085AEA821D21B04008F6E4F /* AppDelegate.swift in Sources */,
-				A0F4D22221ED40F50041CB05 /* NewslineController.swift in Sources */,
 				A08D67E221D593F200B0943B /* AvailGroupController.swift in Sources */,
+				A0AF3E4721F6C238007B25C0 /* NewsTableViewController.swift in Sources */,
 				A08D67DE21D5918A00B0943B /* UserGroupController.swift in Sources */,
+				A0AF3E4921F6C28F007B25C0 /* NewsTableViewCell.swift in Sources */,
 				A08D67DC21D5911200B0943B /* FriendImageCell.swift in Sources */,
 				A08D67E421D5940900B0943B /* AvailGroupCell.swift in Sources */,
 				A08D67D721D58A3700B0943B /* UserFriendCell.swift in Sources */,
