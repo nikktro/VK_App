@@ -17,11 +17,8 @@ class NewsTableViewCell: UITableViewCell {
   @IBOutlet weak var contentText: UILabel!
   @IBOutlet weak var contentImage: UIImageView!
   
-  
   @IBOutlet weak var commentCount: UILabel!
-  
   @IBOutlet weak var shareCount: UILabel!
-  
   @IBOutlet weak var viewCount: UILabel!
   
   
