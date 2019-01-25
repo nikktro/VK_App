@@ -53,6 +53,15 @@ import UIKit
     if !isLiked {
       counter += 1
       self.isLiked = true
+      
+      // Анимация лайка
+      let animation = CASpringAnimation(keyPath: "transform.scale")
+      animation.fromValue = 1
+      animation.toValue = 4
+      animation.duration = 0.1
+      animation.autoreverses = true
+      likeButton.layer.add(animation, forKey: nil)
+      
     } else {
       counter -= 1
       self.isLiked = false
