@@ -80,11 +80,11 @@
 		A085AEA621D21B04008F6E4F /* VK_app */ = {
 			isa = PBXGroup;
 			children = (
-				A0D376C521F978460096C5A0 /* Animation */,
 				A085AEAB21D21B04008F6E4F /* Main.storyboard */,
 				A085AEB021D21B05008F6E4F /* LaunchScreen.storyboard */,
 				A085AEA721D21B04008F6E4F /* AppDelegate.swift */,
 				A08D67E521D611A400B0943B /* Topology.swift */,
+				A0D376C521F978460096C5A0 /* Animation */,
 				A0AF3E4521F6BD22007B25C0 /* LoginForm */,
 				A0F4D22021ED40B40041CB05 /* Newsline */,
 				A0C382B021D582FB00FA3250 /* UserFriendList */,
