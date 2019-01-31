@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A02514EF22035F1D00884E18 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02514EE22035F1D00884E18 /* GalleryViewCell.swift */; };
+		A02514F122035F3F00884E18 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02514F022035F3F00884E18 /* GalleryViewController.swift */; };
 		A085AEA821D21B04008F6E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085AEA721D21B04008F6E4F /* AppDelegate.swift */; };
 		A085AEAD21D21B04008F6E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A085AEAB21D21B04008F6E4F /* Main.storyboard */; };
 		A085AEAF21D21B05008F6E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A085AEAE21D21B05008F6E4F /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A02514EE22035F1D00884E18 /* GalleryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
+		A02514F022035F3F00884E18 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		A085AEA421D21B04008F6E4F /* VK_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A085AEA721D21B04008F6E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A085AEAC21D21B04008F6E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				A08D67D921D590F400B0943B /* FriendImageController.swift */,
+				A02514F022035F3F00884E18 /* GalleryViewController.swift */,
+				A02514EE22035F1D00884E18 /* GalleryViewCell.swift */,
 				A08D67DB21D5911200B0943B /* FriendImageCell.swift */,
 			);
 			path = CollectionView;
@@ -231,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A08D67DA21D590F400B0943B /* FriendImageController.swift in Sources */,
+				A02514F122035F3F00884E18 /* GalleryViewController.swift in Sources */,
 				A085AEBA21D2220D008F6E4F /* LoginFormController.swift in Sources */,
 				A08D67E621D611A400B0943B /* Topology.swift in Sources */,
 				A08D67E021D591A200B0943B /* UserGroupCell.swift in Sources */,
@@ -238,6 +245,7 @@
 				A08D67E221D593F200B0943B /* AvailGroupController.swift in Sources */,
 				A0AF3E4721F6C238007B25C0 /* NewsTableViewController.swift in Sources */,
 				A08D67DE21D5918A00B0943B /* UserGroupController.swift in Sources */,
+				A02514EF22035F1D00884E18 /* GalleryViewCell.swift in Sources */,
 				A0D376C721F9786F0096C5A0 /* ProgressBar.swift in Sources */,
 				A0AF3E4921F6C28F007B25C0 /* NewsTableViewCell.swift in Sources */,
 				A08D67DC21D5911200B0943B /* FriendImageCell.swift in Sources */,
