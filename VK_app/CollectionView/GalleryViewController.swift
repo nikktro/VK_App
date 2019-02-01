@@ -23,6 +23,17 @@ let galleryFoto = [
 
 class GalleryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    let screenSize = UIScreen.main.bounds.size
+    let cellWidth = floor(screenSize.width)
+    let cellHeigth = floor(screenSize.height / 2)
+    let layout = collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+    layout.itemSize = CGSize(width: cellWidth, height: cellHeigth)
+  }
+  
+  
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
     // #warning Incomplete implementation, return the number of sections
     return 1

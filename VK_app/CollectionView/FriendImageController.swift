@@ -8,20 +8,14 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "userPhoto"
 
 class FriendImageController: UICollectionViewController {
   
   // получаем массив из UserFriendController через метод prepare for segue
   var selectedFriend: [Friend] = []
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    // Register cell classes
-    self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-    
-  }
+
   
   
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
