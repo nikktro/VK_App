@@ -642,6 +642,9 @@
                             <outlet property="delegate" destination="I9M-W3-60I" id="hbr-kH-0Re"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="INe-7x-IXA">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="SXW-ek-9qa"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1n-hu-ufu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -698,7 +701,7 @@
         <!--Друзья-->
         <scene sceneID="mV2-Aw-7pH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hBQ-Uu-14O" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hBQ-Uu-14O" customClass="NintyDegreeNavigationController" customModule="VK_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" id="k7v-Wr-TJy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="maO-7r-vDd">
