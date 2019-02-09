@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AZJ-YP-01O">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -145,7 +145,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="27.436281859070466"/>
+            <point key="canvasLocation" x="1055" y="797"/>
+        </scene>
+        <!--Login Controller-->
+        <scene sceneID="Ada-fE-Xag">
+            <objects>
+                <viewController id="AZJ-YP-01O" customClass="VKLoginController" customModule="VK_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uVj-gK-IbQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZiM-rJ-ngT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZiM-rJ-ngT" firstAttribute="top" secondItem="6te-5C-rI4" secondAttribute="top" id="aGY-2x-ULW"/>
+                            <constraint firstItem="ZiM-rJ-ngT" firstAttribute="leading" secondItem="6te-5C-rI4" secondAttribute="leading" id="lfh-me-rrY"/>
+                            <constraint firstItem="6te-5C-rI4" firstAttribute="trailing" secondItem="ZiM-rJ-ngT" secondAttribute="trailing" id="lzq-rq-40D"/>
+                            <constraint firstItem="6te-5C-rI4" firstAttribute="bottom" secondItem="ZiM-rJ-ngT" secondAttribute="bottom" id="myX-37-71c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6te-5C-rI4"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="ZiM-rJ-ngT" id="PY6-d7-sFC"/>
+                        <segue destination="xuL-66-6NJ" kind="presentation" identifier="VKLogin" modalTransitionStyle="flipHorizontal" id="7lO-T9-uxq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ztt-rY-3yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1054" y="27"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="scV-Y4-afe">
@@ -763,4 +798,7 @@
         <image name="shareIcon" width="28" height="25"/>
         <image name="viewIcon" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7lO-T9-uxq"/>
+    </inferredMetricsTieBreakers>
 </document>
