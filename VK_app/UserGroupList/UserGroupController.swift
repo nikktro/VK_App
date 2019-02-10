@@ -19,6 +19,9 @@ class UserGroupController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // Query User Groups
+    let groupJson = apiQueryURLSession(path: "/method/groups.get")
+    print(groupJson)
   }
   
   // MARK: - Table view data source

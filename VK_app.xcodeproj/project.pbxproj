@@ -27,6 +27,7 @@
 		A0ABDA9F22079FF900F83B26 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ABDA9E22079FF900F83B26 /* CustomInteractiveTransition.swift */; };
 		A0AF3E4721F6C238007B25C0 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF3E4621F6C238007B25C0 /* NewsTableViewController.swift */; };
 		A0AF3E4921F6C28F007B25C0 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF3E4821F6C28F007B25C0 /* NewsTableViewCell.swift */; };
+		A0AF9D5F220FA1500087C939 /* NetworkingQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF9D5E220FA1500087C939 /* NetworkingQuery.swift */; };
 		A0B7042C220F93CA009FCCF2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B7042B220F93CA009FCCF2 /* Session.swift */; };
 		A0B7042E220F950E009FCCF2 /* VKLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B7042D220F950E009FCCF2 /* VKLoginController.swift */; };
 		A0D376C721F9786F0096C5A0 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D376C621F9786F0096C5A0 /* ProgressBar.swift */; };
@@ -56,6 +57,7 @@
 		A0ABDA9E22079FF900F83B26 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		A0AF3E4621F6C238007B25C0 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		A0AF3E4821F6C28F007B25C0 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		A0AF9D5E220FA1500087C939 /* NetworkingQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingQuery.swift; sourceTree = "<group>"; };
 		A0B7042B220F93CA009FCCF2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		A0B7042D220F950E009FCCF2 /* VKLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginController.swift; sourceTree = "<group>"; };
 		A0D376C621F9786F0096C5A0 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
@@ -92,13 +94,12 @@
 		A085AEA621D21B04008F6E4F /* VK_app */ = {
 			isa = PBXGroup;
 			children = (
+				A0AF9D5D220FA0780087C939 /* Network */,
 				A085AEAB21D21B04008F6E4F /* Main.storyboard */,
 				A085AEB021D21B05008F6E4F /* LaunchScreen.storyboard */,
 				A085AEA721D21B04008F6E4F /* AppDelegate.swift */,
-				A0B7042B220F93CA009FCCF2 /* Session.swift */,
 				A08D67E521D611A400B0943B /* Topology.swift */,
 				A0D376C521F978460096C5A0 /* Animation */,
-				A0AF3E4521F6BD22007B25C0 /* LoginForm */,
 				A0F4D22021ED40B40041CB05 /* Newsline */,
 				A0C382B021D582FB00FA3250 /* UserFriendList */,
 				A08D67D821D5907900B0943B /* CollectionView */,
@@ -146,6 +147,16 @@
 				A0B7042D220F950E009FCCF2 /* VKLoginController.swift */,
 			);
 			path = LoginForm;
+			sourceTree = "<group>";
+		};
+		A0AF9D5D220FA0780087C939 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A0B7042B220F93CA009FCCF2 /* Session.swift */,
+				A0AF9D5E220FA1500087C939 /* NetworkingQuery.swift */,
+				A0AF3E4521F6BD22007B25C0 /* LoginForm */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		A0C382B021D582FB00FA3250 /* UserFriendList */ = {
@@ -268,6 +279,7 @@
 				A0ABDA9922079F8A00F83B26 /* NintyDegreePushAnimator.swift in Sources */,
 				A02514EF22035F1D00884E18 /* GalleryViewCell.swift in Sources */,
 				A0D376C721F9786F0096C5A0 /* ProgressBar.swift in Sources */,
+				A0AF9D5F220FA1500087C939 /* NetworkingQuery.swift in Sources */,
 				A0AF3E4921F6C28F007B25C0 /* NewsTableViewCell.swift in Sources */,
 				A0B7042C220F93CA009FCCF2 /* Session.swift in Sources */,
 				A08D67DC21D5911200B0943B /* FriendImageCell.swift in Sources */,
