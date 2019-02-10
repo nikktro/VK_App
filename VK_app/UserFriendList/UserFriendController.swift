@@ -43,6 +43,10 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
     searchFriendList = friendList
     userDictionaryAndHeader()
     tableView.keyboardDismissMode = .onDrag // скрываем клавиатуру при скролле
+    
+    // Query User FriendList
+    // запрос дополнительно подгружает фото photo_200_orig
+    apiUserFriendList()
   }
   
   

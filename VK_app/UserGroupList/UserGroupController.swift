@@ -19,9 +19,15 @@ class UserGroupController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Query User Groups
-    let groupJson = apiQueryURLSession(path: "/method/groups.get")
-    print(groupJson)
+    // Query User GroupList
+    apiUserGroupListURLSession()
+    // TODO:
+    // При использовании URLSession в консоль выдает ошибки:
+    // [BoringSSL] nw_protocol_boringssl_get_output_frames(1301) [C2.1:2][0x7fa19743a1e0] get output frames failed, state 8196
+    // TIC Read Status [2:0x0]: 1:57
+    
+    // Через Alamofire данных ошибок нет
+    //apiUserGroupList()
   }
   
   // MARK: - Table view data source

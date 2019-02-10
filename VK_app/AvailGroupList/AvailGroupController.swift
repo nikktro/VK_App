@@ -72,6 +72,8 @@ class AvailGroupController: UITableViewController, UISearchBarDelegate {
     groupSearchList = groupList.filter({ group -> Bool in
       return group.name.lowercased().contains(searchText.lowercased())
     })
+    // запрос групп API при поиске
+    apiUserGroupList()
     tableView.reloadData()
     
   }
