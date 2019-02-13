@@ -13,14 +13,8 @@ class AvailGroupController: UITableViewController, UISearchBarDelegate {
   
   @IBOutlet weak var groupSearchBar: UISearchBar!
   
-  var groupList = [
-    Group(name: "C#", image: UIImage(named: "groupCsharp")),
-    Group(name: "HTML", image: UIImage(named: "groupHtml")),
-    Group(name: "Java", image: UIImage(named: "groupJava")),
-    Group(name: "Linux", image: UIImage(named: "groupLinux")),
-    Group(name: "Python", image: UIImage(named: "groupPython")),
-    Group(name: "Swift", image: UIImage(named: "groupSwift"))
-  ]
+  // TODO: Определиться со структурой массивов доступных групп и списка для поиска
+  var groupList = [Group]()
   
   var groupSearchList = [Group]()
   
@@ -48,11 +42,8 @@ class AvailGroupController: UITableViewController, UISearchBarDelegate {
     
     // получаем ячейку из пула
     let cell = tableView.dequeueReusableCell(withIdentifier: "AvailGroup", for: indexPath) as! AvailGroupCell
-    // получаем группу
-    let group = groupSearchList[indexPath.row]
     // устанавливаем группу в надпись ячейки и аватарку
-    cell.userGroupLabel.text = group.name
-    cell.userGroupImage.image = group.image
+    cell.configure(with: groupList[indexPath.row])
     
     return cell
   }
@@ -72,8 +63,8 @@ class AvailGroupController: UITableViewController, UISearchBarDelegate {
     groupSearchList = groupList.filter({ group -> Bool in
       return group.name.lowercased().contains(searchText.lowercased())
     })
-    // запрос групп API при поиске
-    apiUserGroupList()
+    // TODO: запрос групп API при поиске
+
     tableView.reloadData()
     
   }

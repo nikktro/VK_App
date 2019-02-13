@@ -46,7 +46,7 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
     
     // Query User FriendList
     // запрос дополнительно подгружает фото photo_200_orig
-    apiUserFriendList()
+    //apiUserFriendList()
   }
   
   

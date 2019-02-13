@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserGroupCell: UITableViewCell {
 
   @IBOutlet weak var userGroupImage: UIImageView!
   @IBOutlet weak var userGroupLabel: UILabel!
   
-
+  public func configure(with groupList: Group) {
+    userGroupLabel.text = groupList.name
+    userGroupImage.kf.setImage(with: URL(string: groupList.photo_50))
+  }
+  
 }

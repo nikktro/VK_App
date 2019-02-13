@@ -9,10 +9,10 @@
 import UIKit
 
 
-struct Group {
-  let name: String
-  let image: UIImage?
-}
+//struct Group {
+//  let name: String
+//  let image: UIImage?
+//}
 
 struct Friend {
   let id: Int

@@ -11,23 +11,32 @@ import UIKit
 
 class UserGroupController: UITableViewController {
   
-  var groupList = [
-    Group(name: "Linux", image: UIImage(named: "groupLinux")),
-    Group(name: "Swift", image: UIImage(named: "groupSwift"))
-  ]
+  private var groupList = [Group]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+  }
+  
+  
+  override func viewDidAppear(_ animated: Bool) {
     
-    // Query User GroupList
-    apiUserGroupListURLSession()
-    // TODO:
-    // При использовании URLSession в консоль выдает ошибки:
-    // [BoringSSL] nw_protocol_boringssl_get_output_frames(1301) [C2.1:2][0x7fa19743a1e0] get output frames failed, state 8196
-    // TIC Read Status [2:0x0]: 1:57
-    
-    // Через Alamofire данных ошибок нет
-    //apiUserGroupList()
+    // Запрос к API Group
+    let networkingQuery = NetworkingQuery()
+    networkingQuery.apiUserGroupList() { [weak self] groupListJSON, error in
+      
+      if let error = error {
+        // TODO: правильно через extenssion выдавать пользователю alert
+        print(error.localizedDescription)
+        return
+      } else if let groups = groupListJSON, let self = self {
+        self.groupList = groups
+        
+        // обновление интерфейса переводим в главный поток
+        DispatchQueue.main.async {
+          self.tableView.reloadData()
+        }
+      }
+    }
   }
   
   // MARK: - Table view data source
@@ -47,11 +56,8 @@ class UserGroupController: UITableViewController {
     
     // получаем ячейку из пула
     let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroup", for: indexPath) as! UserGroupCell
-    // получаем группу
-    let group = groupList[indexPath.row]
     // устанавливаем группу в надпись ячейки и аватарку
-    cell.userGroupLabel.text = group.name
-    cell.userGroupImage.image = group.image
+    cell.configure(with: groupList[indexPath.row])
     
     return cell
   }
@@ -70,10 +76,12 @@ class UserGroupController: UITableViewController {
       // получаем группу по индексу // через массив groupSearchList
       let group = availGroupController.groupSearchList[indexPath.row]
       
+      
+      // TODO: Починить фильтр уже существующих групп
       // добавляем группу в список пользовательских групп
       // Фильтр на добавление уже существующей группы
       guard !groupList.contains(where: { (item) -> Bool in
-        return item.name == group.name && item.image == group.image
+        return item.name == group.name //TODO: && item.image == group.image
       }) else {
         return
       }

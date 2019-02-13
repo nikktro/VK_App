@@ -8,11 +8,14 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 let apiScheme = "https"
 let apiHost = "api.vk.com"
 let apiVersion = "5.92"
 
+
+class NetworkingQuery {
 
 public func apiUserGroupListURLSession() {
   
@@ -49,7 +52,7 @@ public func apiUserGroupListURLSession() {
 }
 
 
-public func apiUserGroupList() {
+public func apiUserGroupList(completion: (([Group]?, Error?) -> Void)? = nil ) {
   
   let path = "/method/groups.get"
   
@@ -60,11 +63,22 @@ public func apiUserGroupList() {
   ]
   
   Alamofire.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
-    guard let value = response.value else { return }
-    print(value)
+    
+    switch response.result {
+      
+    case .success(let value):
+      let json = JSON(value)
+      let groupListJSON = json["response"]["items"].arrayValue.map { Group(json: $0) }
+      //groupListJSON.forEach { print($0) }
+      completion?(groupListJSON, nil)
+
+    case .failure(let error):
+      print("Error: \(error.localizedDescription)")
+      completion?(nil, error)
+      
+    }
   }
 }
-
 
 public func apiUserFriendList() {
 
@@ -77,8 +91,19 @@ public func apiUserFriendList() {
   ]
 
   Alamofire.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
+    
+    
+    
+    
     guard let value = response.value else { return }
     print(value)
+    
+    
+    
+    
+    
+    
   }
 }
 
+}

@@ -14,4 +14,8 @@ class AvailGroupCell: UITableViewCell {
   @IBOutlet weak var userGroupLabel: UILabel!
   
 
+  public func configure(with groupList: Group) {
+    // TODO: создать фунцию заполения данных
+  }
+  
 }
