@@ -10,15 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "userGallery"
 
-let galleryFoto = [
-  Friend(id: 1, name: "Анастасия", surname: "Коваль", image: UIImage(named: "userAnastasia")),
-  Friend(id: 3, name: "Евгений", surname: "Романенко", image: UIImage(named: "userEvgene")),
-  Friend(id: 5, name: "Карина", surname: "Станиславовна", image: UIImage(named: "userKarina")),
-  Friend(id: 7, name: "Anastasiya", surname: "Shafir", image: UIImage(named: "userAnastasias")),
-  Friend(id: 11, name: "Анатолий", surname: "Зубов", image: UIImage(named: "userAnatoly")),
-  Friend(id: 13, name: "Давид", surname: "Выгодчиков", image: UIImage(named: "userDavid")),
-  Friend(id: 15, name: "Максим", surname: "Левшин", image: UIImage(named: "userMaxim")),
-]
+let galleryFoto = [Friend]()
 
 
 class GalleryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -51,7 +43,8 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     
     // Configure the cell
     let foto = galleryFoto[indexPath.row]
-    cell.galleryImage.image = foto.image
+    //TODO
+    //cell.galleryImage.image = foto.image
     
     return cell
   }

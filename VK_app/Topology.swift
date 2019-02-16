@@ -14,12 +14,12 @@ import UIKit
 //  let image: UIImage?
 //}
 
-struct Friend {
-  let id: Int
-  let name: String
-  let surname: String
-  let image: UIImage?
-}
+//struct Friend {
+//  let id: Int
+//  let name: String
+//  let surname: String
+//  let image: UIImage?
+//}
 
 struct News {
   let titleImage: UIImage?

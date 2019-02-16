@@ -11,7 +11,13 @@ import Kingfisher
 
 class UserGroupCell: UITableViewCell {
 
-  @IBOutlet weak var userGroupImage: UIImageView!
+  @IBOutlet weak var userGroupImage: UIImageView! {
+    didSet{
+      userGroupImage.layer.cornerRadius = userGroupImage.frame.size.height / 2
+      userGroupImage.layer.masksToBounds = true
+      // TODO: добавить тень для аватарки
+    }
+  }
   @IBOutlet weak var userGroupLabel: UILabel!
   
   public func configure(with groupList: Group) {

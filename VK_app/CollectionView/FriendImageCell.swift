@@ -12,5 +12,9 @@ class FriendImageCell: UICollectionViewCell {
   
   @IBOutlet weak var friendImage: UIImageView!
   
+  public func configure(with url: String) {
+    friendImage.kf.setImage(with: URL(string: url))
+  }
+  
   
 }

@@ -7,15 +7,36 @@
 //
 
 import UIKit
+import Kingfisher
 
 private let reuseIdentifier = "userPhoto"
 
 class FriendImageController: UICollectionViewController {
   
-  // получаем массив из UserFriendController через метод prepare for segue
-  var selectedFriend: [Friend] = []
+  var selectedFriendId: Int = 0
+  var friendPhoto: [FriendPhoto] = []
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // VKService Friend Photo
+    let vkService = VKService()
 
+    vkService.apiUserFriendPhoto(for: selectedFriendId) { [weak self] friendPhotoJSON, error in
+      if let error = error {
+        // TODO: правильно через extenssion выдавать пользователю alert
+        print(error.localizedDescription)
+        return
+      } else if let value = friendPhotoJSON, let self = self {
+        self.friendPhoto = value
+
+        // сортировка и обновление интерфейса в главном потоке
+        DispatchQueue.main.async {
+          self.collectionView.reloadData()
+        }
+      }
+    }
+    
+  }
   
   
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -26,17 +47,14 @@ class FriendImageController: UICollectionViewController {
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     // Количество Item определяет размер массива
-    return selectedFriend.count
+    return friendPhoto.count
   }
   
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     // создаем экземпляр cell для отображения в Collection Reusable View с id "userPhoto", приводим к FriendImageCell
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userPhoto", for: indexPath) as! FriendImageCell
-    // достаем структуру из пришедшего массива
-    let foto = selectedFriend[indexPath.row]
-    // достаем фото из структуры и отображаем ее в IB outlet friendImage во FriendImageCell
-    cell.friendImage.image = foto.image
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendImageCell
+    cell.configure(with: friendPhoto[indexPath.row].url)
     return cell
   }
   

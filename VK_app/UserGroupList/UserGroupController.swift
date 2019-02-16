@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+// TODO!!
 class UserGroupController: UITableViewController {
   
   private var groupList = [Group]()
@@ -21,8 +21,8 @@ class UserGroupController: UITableViewController {
   override func viewDidAppear(_ animated: Bool) {
     
     // Запрос к API Group
-    let networkingQuery = NetworkingQuery()
-    networkingQuery.apiUserGroupList() { [weak self] groupListJSON, error in
+    let vkService = VKService()
+    vkService.apiUserGroupList() { [weak self] groupListJSON, error in
       
       if let error = error {
         // TODO: правильно через extenssion выдавать пользователю alert
