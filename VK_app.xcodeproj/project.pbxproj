@@ -35,6 +35,9 @@
 		A0D994EE2213784600F7256B /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D994ED2213784600F7256B /* Group.swift */; };
 		A0D994F42213A1FD00F7256B /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D994F32213A1FD00F7256B /* Friend.swift */; };
 		A0D994F622176F3C00F7256B /* FriendPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D994F522176F3C00F7256B /* FriendPhoto.swift */; };
+		A0D994F822186D0100F7256B /* RealmFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D994F722186D0100F7256B /* RealmFriend.swift */; };
+		A0D994FA2219505000F7256B /* RealmGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D994F92219505000F7256B /* RealmGroup.swift */; };
+		A0D994FC221950DB00F7256B /* RealmFriendPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D994FB221950DB00F7256B /* RealmFriendPhoto.swift */; };
 		A0EB4CF821ED170700BBF079 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EB4CF721ED170700BBF079 /* LikeControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,9 @@
 		A0D994ED2213784600F7256B /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		A0D994F32213A1FD00F7256B /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		A0D994F522176F3C00F7256B /* FriendPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhoto.swift; sourceTree = "<group>"; };
+		A0D994F722186D0100F7256B /* RealmFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFriend.swift; sourceTree = "<group>"; };
+		A0D994F92219505000F7256B /* RealmGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmGroup.swift; sourceTree = "<group>"; };
+		A0D994FB221950DB00F7256B /* RealmFriendPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFriendPhoto.swift; sourceTree = "<group>"; };
 		A0EB4CF721ED170700BBF079 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
 		C1C0F5595073AB782E7C66F6 /* Pods_VK_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VK_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,9 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				A08D67D921D590F400B0943B /* FriendImageController.swift */,
+				A08D67DB21D5911200B0943B /* FriendImageCell.swift */,
 				A02514F022035F3F00884E18 /* GalleryViewController.swift */,
 				A02514EE22035F1D00884E18 /* GalleryViewCell.swift */,
-				A08D67DB21D5911200B0943B /* FriendImageCell.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -207,6 +213,9 @@
 				A0D994ED2213784600F7256B /* Group.swift */,
 				A0D994F32213A1FD00F7256B /* Friend.swift */,
 				A0D994F522176F3C00F7256B /* FriendPhoto.swift */,
+				A0D994F722186D0100F7256B /* RealmFriend.swift */,
+				A0D994F92219505000F7256B /* RealmGroup.swift */,
+				A0D994FB221950DB00F7256B /* RealmFriendPhoto.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -331,6 +340,8 @@
 				"${PODS_ROOT}/Target Support Files/Pods-VK_app/Pods-VK_app-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -339,6 +350,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,9 +366,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0D994FC221950DB00F7256B /* RealmFriendPhoto.swift in Sources */,
 				A08D67DA21D590F400B0943B /* FriendImageController.swift in Sources */,
 				A02514F122035F3F00884E18 /* GalleryViewController.swift in Sources */,
 				A0ABDA9F22079FF900F83B26 /* CustomInteractiveTransition.swift in Sources */,
+				A0D994FA2219505000F7256B /* RealmGroup.swift in Sources */,
 				A0D994F622176F3C00F7256B /* FriendPhoto.swift in Sources */,
 				A08D67E621D611A400B0943B /* Topology.swift in Sources */,
 				A08D67E021D591A200B0943B /* UserGroupCell.swift in Sources */,
@@ -364,6 +379,7 @@
 				A0AF3E4721F6C238007B25C0 /* NewsTableViewController.swift in Sources */,
 				A08D67DE21D5918A00B0943B /* UserGroupController.swift in Sources */,
 				A0ABDA9922079F8A00F83B26 /* NintyDegreePushAnimator.swift in Sources */,
+				A0D994F822186D0100F7256B /* RealmFriend.swift in Sources */,
 				A02514EF22035F1D00884E18 /* GalleryViewCell.swift in Sources */,
 				A0D376C721F9786F0096C5A0 /* ProgressBar.swift in Sources */,
 				A0AF9D5F220FA1500087C939 /* VKService.swift in Sources */,
