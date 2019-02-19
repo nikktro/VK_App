@@ -19,8 +19,6 @@
 		A08D67DC21D5911200B0943B /* FriendImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08D67DB21D5911200B0943B /* FriendImageCell.swift */; };
 		A08D67DE21D5918A00B0943B /* UserGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08D67DD21D5918A00B0943B /* UserGroupController.swift */; };
 		A08D67E021D591A200B0943B /* UserGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08D67DF21D591A200B0943B /* UserGroupCell.swift */; };
-		A08D67E221D593F200B0943B /* AvailGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08D67E121D593F200B0943B /* AvailGroupController.swift */; };
-		A08D67E421D5940900B0943B /* AvailGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08D67E321D5940900B0943B /* AvailGroupCell.swift */; };
 		A08D67E621D611A400B0943B /* Topology.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08D67E521D611A400B0943B /* Topology.swift */; };
 		A0ABDA9922079F8A00F83B26 /* NintyDegreePushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ABDA9822079F8A00F83B26 /* NintyDegreePushAnimator.swift */; };
 		A0ABDA9D22079FD000F83B26 /* NintyDegreeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ABDA9C22079FD000F83B26 /* NintyDegreeNavigationController.swift */; };
@@ -58,8 +56,6 @@
 		A08D67DB21D5911200B0943B /* FriendImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendImageCell.swift; sourceTree = "<group>"; };
 		A08D67DD21D5918A00B0943B /* UserGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupController.swift; sourceTree = "<group>"; };
 		A08D67DF21D591A200B0943B /* UserGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupCell.swift; sourceTree = "<group>"; };
-		A08D67E121D593F200B0943B /* AvailGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailGroupController.swift; sourceTree = "<group>"; };
-		A08D67E321D5940900B0943B /* AvailGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailGroupCell.swift; sourceTree = "<group>"; };
 		A08D67E521D611A400B0943B /* Topology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topology.swift; sourceTree = "<group>"; };
 		A0ABDA9822079F8A00F83B26 /* NintyDegreePushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NintyDegreePushAnimator.swift; sourceTree = "<group>"; };
 		A0ABDA9C22079FD000F83B26 /* NintyDegreeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NintyDegreeNavigationController.swift; sourceTree = "<group>"; };
@@ -129,7 +125,6 @@
 				A0C382B021D582FB00FA3250 /* UserFriendList */,
 				A08D67D821D5907900B0943B /* CollectionView */,
 				A08D67CF21D5886700B0943B /* UserGroupList */,
-				A0C382B221D5835000FA3250 /* AvailGroupList */,
 				A085AEAB21D21B04008F6E4F /* Main.storyboard */,
 				A085AEB021D21B05008F6E4F /* LaunchScreen.storyboard */,
 				A085AEA721D21B04008F6E4F /* AppDelegate.swift */,
@@ -187,15 +182,6 @@
 				A08D67D621D58A3700B0943B /* UserFriendCell.swift */,
 			);
 			path = UserFriendList;
-			sourceTree = "<group>";
-		};
-		A0C382B221D5835000FA3250 /* AvailGroupList */ = {
-			isa = PBXGroup;
-			children = (
-				A08D67E121D593F200B0943B /* AvailGroupController.swift */,
-				A08D67E321D5940900B0943B /* AvailGroupCell.swift */,
-			);
-			path = AvailGroupList;
 			sourceTree = "<group>";
 		};
 		A0D376C521F978460096C5A0 /* Animation */ = {
@@ -375,7 +361,6 @@
 				A08D67E621D611A400B0943B /* Topology.swift in Sources */,
 				A08D67E021D591A200B0943B /* UserGroupCell.swift in Sources */,
 				A085AEA821D21B04008F6E4F /* AppDelegate.swift in Sources */,
-				A08D67E221D593F200B0943B /* AvailGroupController.swift in Sources */,
 				A0AF3E4721F6C238007B25C0 /* NewsTableViewController.swift in Sources */,
 				A08D67DE21D5918A00B0943B /* UserGroupController.swift in Sources */,
 				A0ABDA9922079F8A00F83B26 /* NintyDegreePushAnimator.swift in Sources */,
@@ -388,7 +373,6 @@
 				A0D994F42213A1FD00F7256B /* Friend.swift in Sources */,
 				A0D994EE2213784600F7256B /* Group.swift in Sources */,
 				A08D67DC21D5911200B0943B /* FriendImageCell.swift in Sources */,
-				A08D67E421D5940900B0943B /* AvailGroupCell.swift in Sources */,
 				A0ABDA9D22079FD000F83B26 /* NintyDegreeNavigationController.swift in Sources */,
 				A0B7042E220F950E009FCCF2 /* VKLoginController.swift in Sources */,
 				A08D67D721D58A3700B0943B /* UserFriendCell.swift in Sources */,

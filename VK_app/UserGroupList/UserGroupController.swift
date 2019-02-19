@@ -8,13 +8,18 @@
 
 import UIKit
 
-// TODO!!
-class UserGroupController: UITableViewController {
+class UserGroupController: UITableViewController, UISearchBarDelegate {
+  
+  @IBOutlet weak var groupSearchBar: UISearchBar!
   
   private var groupList = [Group]()
+  private var groupSearchList = [Group]() // массив для поиска
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    groupSearchBar.delegate = self
+    tableView.keyboardDismissMode = .onDrag
   }
   
   
@@ -33,75 +38,47 @@ class UserGroupController: UITableViewController {
         
         // обновление интерфейса переводим в главный поток
         DispatchQueue.main.async {
+          self.groupSearchList = self.groupList
           self.tableView.reloadData()
         }
       }
     }
   }
   
-  // MARK: - Table view data source
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
     return 1
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
-    return groupList.count
+    return groupSearchList.count
   }
-  
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    // получаем ячейку из пула
     let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroup", for: indexPath) as! UserGroupCell
-    // устанавливаем группу в надпись ячейки и аватарку
-    cell.configure(with: groupList[indexPath.row])
-    
+    cell.configure(with: groupSearchList[indexPath.row])
     return cell
   }
+}
+
+extension UserGroupController {
   
-  
-  @IBAction func addGroup(segue: UIStoryboardSegue) {
+  // SearchBar
+  func searchBar(_ groupSearchBar: UISearchBar, textDidChange searchText: String) {
     
-    // проверяем идентификатор, чтобы убедиться, что это нужный переход
-    guard segue.identifier == "addGroup" else { return }
-    
-    // получаем ссылку на контроллер, с которого осуществляется переход
-    let availGroupController = segue.source as! AvailGroupController
-    
-    // получаем индекс выделенной ячейки
-    if let indexPath = availGroupController.tableView.indexPathForSelectedRow {
-      // получаем группу по индексу // через массив groupSearchList
-      let group = availGroupController.groupSearchList[indexPath.row]
-      
-      
-      // TODO: Починить фильтр уже существующих групп
-      // добавляем группу в список пользовательских групп
-      // Фильтр на добавление уже существующей группы
-      guard !groupList.contains(where: { (item) -> Bool in
-        return item.name == group.name //TODO: && item.image == group.image
-      }) else {
-        return
-      }
-      // Если группа в списке отсутсвует - добавляем ее в массив groupList
-      groupList.append(group)
-      // обновляем таблицу
+    // очищаем фильтр, если запрос пустой
+    guard !searchText.isEmpty else {
+      groupSearchList = groupList
       tableView.reloadData()
+      return
     }
+    
+    // фильтр по lowercase
+    groupSearchList = groupList.filter({ group -> Bool in
+      return group.name.lowercased().contains(searchText.lowercased())
+    })
+    tableView.reloadData()
+    
   }
-  
-  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    // если была нажата кнопка удалить
-    if editingStyle == .delete {
-      // удаляем группу из массива
-      groupList.remove(at: indexPath.row)
-      // удаляем строку из таблицы
-      tableView.deleteRows(at: [indexPath], with: .fade)
-    }
-  }
-  
-  
   
 }
