@@ -12,12 +12,12 @@ import RealmSwift
 class RealmGroup: Object {
   @objc dynamic var id: Int = 0
   @objc dynamic var name: String = ""
-  @objc dynamic var photo_50: String = ""
+  @objc dynamic var photo: String = ""
   
-  convenience init(_ id: Int, _ name: String, _ photo_50: String) {
+  convenience init(_ id: Int, _ name: String, _ photo: String) {
     self.init()
     self.id = id
     self.name = name
-    self.photo_50 = photo_50
+    self.photo = photo
   }
 }

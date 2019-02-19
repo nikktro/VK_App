@@ -13,13 +13,13 @@ class RealmFriend: Object {
   @objc dynamic var id: Int = 0
   @objc dynamic var first_name: String = ""
   @objc dynamic var last_name: String = ""
-  @objc dynamic var photo_50: String = ""
+  @objc dynamic var photo: String = ""
   
-  convenience init(_ id: Int, _ first_name: String, _ last_name: String, _ photo_50: String) {
+  convenience init(_ id: Int, _ first_name: String, _ last_name: String, _ photo: String) {
     self.init()
     self.id = id
     self.first_name = first_name
     self.last_name = last_name
-    self.photo_50 = photo_50
+    self.photo = photo
   }
 }

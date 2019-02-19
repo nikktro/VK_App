@@ -44,7 +44,7 @@ class UserFriendCell: UITableViewCell {
   // TODO: добавить отдельный label для фамилии / имени
   public func configure(with friendList: Friend) {
     userFriendLabel.text = friendList.first_name + " " + friendList.last_name
-    userFriendImage.kf.setImage(with: URL(string: friendList.photo_50))
+    userFriendImage.kf.setImage(with: URL(string: friendList.photo))
   }
   
 }

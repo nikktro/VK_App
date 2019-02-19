@@ -86,7 +86,7 @@ class VKService {
     
     let params: Parameters = [
       "access_token" : Session.shared.token,
-      "fields" : "photo_50, photo_200_orig",
+      "fields" : "photo_100, photo_200_orig",
       "v": apiVersion
     ]
     

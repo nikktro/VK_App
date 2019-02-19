@@ -22,7 +22,7 @@ class UserGroupCell: UITableViewCell {
   
   public func configure(with groupList: Group) {
     userGroupLabel.text = groupList.name
-    userGroupImage.kf.setImage(with: URL(string: groupList.photo_50))
+    userGroupImage.kf.setImage(with: URL(string: groupList.photo))
   }
   
 }

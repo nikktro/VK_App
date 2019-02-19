@@ -16,12 +16,12 @@ class Group: CustomStringConvertible {
   
   let id: Int
   let name: String
-  let photo_50: String
+  let photo: String
   
   init(json: JSON) {
     self.id = json["id"].intValue
     self.name = json["name"].stringValue
-    self.photo_50 = json["photo_50"].stringValue
+    self.photo = json["photo_100"].stringValue
   }
 
 }

@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import Kingfisher
 
+// TODO поменять имя userGallery
 private let reuseIdentifier = "userGallery"
 
-let galleryFoto = [Friend]()
 
 
 class GalleryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
+  // TODO: поменять имя galleryFoto
+  // TODO: Подгрузить качественные фото
+  var galleryFoto = [IndexPath]()
+  var galleryFotoArray = [FriendPhoto]()
+  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -26,6 +33,15 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
   }
   
   
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    DispatchQueue.main.async {
+      //self.collectionView.scrollToItem(at: 3, section: 0), at: .centeredHorizontally, animated: false)
+      self.collectionView.scrollToItem(at: self.galleryFoto[0], at: .centeredHorizontally, animated: false)
+    }
+  }
+  
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
     // #warning Incomplete implementation, return the number of sections
     return 1
@@ -34,31 +50,14 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of items
-    return galleryFoto.count
+    return galleryFotoArray.count
   }
   
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GalleryViewCell
-    
-    // Configure the cell
-    let foto = galleryFoto[indexPath.row]
-    //TODO
-    //cell.galleryImage.image = foto.image
-    
+    cell.configure(with: galleryFotoArray[indexPath.row].url)
     return cell
   }
-  
-  
-  override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    cell.alpha = 0
-    cell.transform = CGAffineTransform(scaleX: 0.0, y: 0.4)
-    UIView.animate(withDuration: 0.3) {
-      cell.alpha = 1
-      cell.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-    }
-  }
-  
-  
 
 }

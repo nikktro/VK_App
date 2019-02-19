@@ -59,3 +59,16 @@ class FriendImageController: UICollectionViewController {
   }
   
 }
+
+extension FriendImageController {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "FriendPhotoGallery" {
+      let friendImageController = segue.source as! FriendImageController
+      let galleryViewController = segue.destination as! GalleryViewController
+      
+      guard let indexPath = friendImageController.collectionView.indexPathsForSelectedItems else { return }
+      galleryViewController.galleryFoto = indexPath
+      galleryViewController.galleryFotoArray = friendPhoto
+    }
+  }
+}
