@@ -533,7 +533,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="friendImage" destination="kiq-dQ-zFI" id="Emb-fg-F9y"/>
-                                    <segue destination="LyC-Vh-l1j" kind="show" id="CVs-dp-gNf"/>
+                                    <segue destination="LyC-Vh-l1j" kind="show" identifier="FriendPhotoGallery" id="CVs-dp-gNf"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
