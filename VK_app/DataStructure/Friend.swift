@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
 class Friend: CustomStringConvertible, Comparable {
   var description: String {
@@ -35,4 +36,20 @@ class Friend: CustomStringConvertible, Comparable {
     return lhs.last_name < rhs.last_name
   }
 
+}
+
+
+class RealmFriend: Object {
+  @objc dynamic var id: Int = 0
+  @objc dynamic var first_name: String = ""
+  @objc dynamic var last_name: String = ""
+  @objc dynamic var photo: String = ""
+  
+  convenience init(_ id: Int, _ first_name: String, _ last_name: String, _ photo: String) {
+    self.init()
+    self.id = id
+    self.first_name = first_name
+    self.last_name = last_name
+    self.photo = photo
+  }
 }

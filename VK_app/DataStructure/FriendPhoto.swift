@@ -7,9 +7,8 @@
 //
 
 import Foundation
-
-
 import SwiftyJSON
+import RealmSwift
 
 class FriendPhoto: CustomStringConvertible {
   var description: String {
@@ -30,4 +29,22 @@ class FriendPhoto: CustomStringConvertible {
     self.height = json["sizes"]["height"].intValue
   }
   
+}
+
+
+class RealmFriendPhoto: Object {
+  @objc dynamic var id: Int = 0
+  @objc dynamic var type: String = ""
+  @objc dynamic var url: String = ""
+  @objc dynamic var width: Int = 0
+  @objc dynamic var heigth: Int = 0
+  
+  convenience init(_ id: Int, _ type: String, _ url: String, _ width: Int, _ heigth: Int) {
+    self.init()
+    self.id = id
+    self.type = type
+    self.url = url
+    self.width = width
+    self.heigth = heigth
+  }
 }

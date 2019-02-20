@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
 class Group: CustomStringConvertible {
   var description: String {
@@ -24,4 +25,18 @@ class Group: CustomStringConvertible {
     self.photo = json["photo_100"].stringValue
   }
 
+}
+
+
+class RealmGroup: Object {
+  @objc dynamic var id: Int = 0
+  @objc dynamic var name: String = ""
+  @objc dynamic var photo: String = ""
+  
+  convenience init(_ id: Int, _ name: String, _ photo: String) {
+    self.init()
+    self.id = id
+    self.name = name
+    self.photo = photo
+  }
 }
