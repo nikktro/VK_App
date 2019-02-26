@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 class UserFriendController: UITableViewController, UISearchBarDelegate {
   
   @IBOutlet weak var searchBar: UISearchBar!
   
-  var friendList = [Friend]()
-  var searchFriendList = [Friend]() // Массив для поиска
+  //var friendList = [Friend]()
+  var friendList: Results<Friend>?
+  var searchFriendList: Results<Friend>? // Массив для поиска
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -31,15 +33,22 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
         print(error.localizedDescription)
         return
       } else if let friends = friendListJSON, let self = self {
-        self.friendList = friends
+        
+        RealmProvider.save(items: friends)
+        //self.friendList = friends
         
         // сортировка и обновление интерфейса в главном потоке
         DispatchQueue.main.async {
-          self.friendList = self.friendList.sorted()
+          //self.friendList = self.friendList.sorted() // TODO: Sort
           self.searchFriendList = self.friendList
           self.tableView.reloadData()
         }
       }
+    }
+    
+    let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+    if let realm = try? Realm(configuration: config) {
+      friendList = realm.objects(Friend.self)
     }
     
   }
@@ -47,14 +56,17 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
   
   // numberOfRowsInSection
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return searchFriendList.count
+    return searchFriendList?.count ?? 0
   }
   
   
   // dequeueReusableCell
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "UserFriends", for: indexPath) as! UserFriendCell
-    cell.configure(with: searchFriendList[indexPath.row])
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserFriends", for: indexPath) as? UserFriendCell,
+      let friend = searchFriendList?[indexPath.row] else { return UITableViewCell() }
+    
+    cell.configure(with: friend)
+
     return cell
   }
   
@@ -72,29 +84,33 @@ extension UserFriendController {
       // определяем выбранного пользователя
       guard let indexPath = userFriendController.tableView.indexPathForSelectedRow else { return }
       // отправляем Friend Id в коллекцию friendImageController
-      friendImageController.selectedFriendId = searchFriendList[indexPath.row].id
+      if let friend = searchFriendList?[indexPath.row] {
+        friendImageController.selectedFriendId = friend.id
+      }
+      
       
     }
   }
 }
 
-extension UserFriendController {
-  // SearchBar
-  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
-    // очищаем фильтр, если запрос пустой
-    guard !searchText.isEmpty else {
-      searchFriendList = friendList
-      tableView.reloadData()
-      return
-    }
-    
-    // фильтр по lowercase в имени и фамилии
-    searchFriendList = friendList.filter({ user -> Bool in
-      //let namesurname = (user.name.lowercased() + user.surname.lowercased())
-      return (user.first_name.lowercased() + user.last_name.lowercased()).contains(searchText.lowercased())
-    })
-    tableView.reloadData()
-    
-  }
-}
+// // TODO: SearchBar
+//extension UserFriendController {
+//  // SearchBar
+//  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//
+//    // очищаем фильтр, если запрос пустой
+//    guard !searchText.isEmpty else {
+//      searchFriendList = friendList
+//      tableView.reloadData()
+//      return
+//    }
+//
+//    // фильтр по lowercase в имени и фамилии
+//    searchFriendList = friendList.filter({ user -> Bool in
+//      //let namesurname = (user.name.lowercased() + user.surname.lowercased())
+//      return (user.first_name.lowercased() + user.last_name.lowercased()).contains(searchText.lowercased())
+//    })
+//    tableView.reloadData()
+//
+//  }
+//}
