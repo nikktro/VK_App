@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 // TODO поменять имя userGallery
 private let reuseIdentifier = "userGallery"
@@ -19,7 +20,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
   // TODO: поменять имя galleryFoto
   // TODO: Подгрузить качественные фото
   var galleryFoto = [IndexPath]()
-  var galleryFotoArray = [FriendPhoto]()
+  var galleryFotoArray: Results<FriendPhoto>?
   
 
   override func viewDidLoad() {
@@ -50,13 +51,14 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of items
-    return galleryFotoArray.count
+    return galleryFotoArray?.count ?? 0
   }
   
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GalleryViewCell
-    cell.configure(with: galleryFotoArray[indexPath.row].url)
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? GalleryViewCell,
+      let gallery = galleryFotoArray?[indexPath.row] else { return UICollectionViewCell() }
+    cell.configure(with: gallery.url)
     return cell
   }
 

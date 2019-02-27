@@ -8,13 +8,15 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 private let reuseIdentifier = "userPhoto"
 
 class FriendImageController: UICollectionViewController {
   
   var selectedFriendId: Int = 0
-  var friendPhoto: [FriendPhoto] = []
+  //var friendPhoto: [FriendPhoto] = []
+  var friendPhoto: Results<FriendPhoto>?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,7 +29,9 @@ class FriendImageController: UICollectionViewController {
         print(error.localizedDescription)
         return
       } else if let value = friendPhotoJSON, let self = self {
-        self.friendPhoto = value
+        
+        RealmProvider.save(items: value)
+        //self.friendPhoto = value
 
         // сортировка и обновление интерфейса в главном потоке
         DispatchQueue.main.async {
@@ -35,6 +39,18 @@ class FriendImageController: UICollectionViewController {
         }
       }
     }
+    
+    let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+    if let realm = try? Realm(configuration: config) {
+      
+      // Delete old photo links to avoid dublicate
+      try? realm.write {
+        realm.delete(realm.objects(FriendPhoto.self))
+      }
+      
+      friendPhoto = realm.objects(FriendPhoto.self)
+    }
+
     
   }
   
@@ -47,14 +63,15 @@ class FriendImageController: UICollectionViewController {
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     // Количество Item определяет размер массива
-    return friendPhoto.count
+    return friendPhoto?.count ?? 0
   }
   
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     // создаем экземпляр cell для отображения в Collection Reusable View с id "userPhoto", приводим к FriendImageCell
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendImageCell
-    cell.configure(with: friendPhoto[indexPath.row].url)
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FriendImageCell,
+      let friendPhotoLet = friendPhoto?[indexPath.row] else { return UICollectionViewCell() }
+    cell.configure(with: friendPhotoLet.url)
     return cell
   }
   
@@ -66,7 +83,8 @@ extension FriendImageController {
       let friendImageController = segue.source as! FriendImageController
       let galleryViewController = segue.destination as! GalleryViewController
       
-      guard let indexPath = friendImageController.collectionView.indexPathsForSelectedItems else { return }
+      guard let indexPath = friendImageController.collectionView.indexPathsForSelectedItems,
+       let friendPhoto = friendPhoto else { return }
       galleryViewController.galleryFoto = indexPath
       galleryViewController.galleryFotoArray = friendPhoto
     }
