@@ -14,7 +14,6 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
   
   @IBOutlet weak var searchBar: UISearchBar!
   
-  //var friendList = [Friend]()
   var friendList: Results<Friend>?
   var searchFriendList: Results<Friend>? // Массив для поиска
   
@@ -33,9 +32,7 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
         print(error.localizedDescription)
         return
       } else if let friends = friendListJSON, let self = self {
-        
         RealmProvider.save(items: friends)
-        //self.friendList = friends
         
         // сортировка и обновление интерфейса в главном потоке
         DispatchQueue.main.async {

@@ -15,7 +15,6 @@ private let reuseIdentifier = "userPhoto"
 class FriendImageController: UICollectionViewController {
   
   var selectedFriendId: Int = 0
-  //var friendPhoto: [FriendPhoto] = []
   var friendPhoto: Results<FriendPhoto>?
   
   override func viewDidLoad() {
@@ -29,9 +28,7 @@ class FriendImageController: UICollectionViewController {
         print(error.localizedDescription)
         return
       } else if let value = friendPhotoJSON, let self = self {
-        
         RealmProvider.save(items: value)
-        //self.friendPhoto = value
 
         // сортировка и обновление интерфейса в главном потоке
         DispatchQueue.main.async {

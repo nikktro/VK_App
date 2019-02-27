@@ -13,7 +13,6 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
   
   @IBOutlet weak var groupSearchBar: UISearchBar!
   
-  //private var groupList = [Group]()
   private var groupList: Results<Group>?
   private var groupSearchList: Results<Group>? // массив для поиска
   
@@ -42,9 +41,7 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
         print(error.localizedDescription)
         return
       } else if let groups = groupListJSON, let self = self {
-        
         RealmProvider.save(items: groups)
-        //self.groupList = groups
         
         // обновление интерфейса переводим в главный поток
         DispatchQueue.main.async {
