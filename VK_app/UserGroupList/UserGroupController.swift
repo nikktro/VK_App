@@ -7,19 +7,27 @@
 //
 
 import UIKit
+import RealmSwift
 
 class UserGroupController: UITableViewController, UISearchBarDelegate {
   
   @IBOutlet weak var groupSearchBar: UISearchBar!
   
-  private var groupList = [Group]()
-  private var groupSearchList = [Group]() // массив для поиска
+  //private var groupList = [Group]()
+  private var groupList: Results<Group>?
+  private var groupSearchList: Results<Group>? // массив для поиска
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     groupSearchBar.delegate = self
     tableView.keyboardDismissMode = .onDrag
+    
+    let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+    if let realm = try? Realm(configuration: config) {
+      groupList = realm.objects(Group.self)
+    }
+    
   }
   
   
@@ -34,7 +42,9 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
         print(error.localizedDescription)
         return
       } else if let groups = groupListJSON, let self = self {
-        self.groupList = groups
+        
+        RealmProvider.save(items: groups)
+        //self.groupList = groups
         
         // обновление интерфейса переводим в главный поток
         DispatchQueue.main.async {
@@ -51,34 +61,36 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return groupSearchList.count
+    return groupSearchList?.count ?? 0
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroup", for: indexPath) as! UserGroupCell
-    cell.configure(with: groupSearchList[indexPath.row])
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroup", for: indexPath) as? UserGroupCell,
+      let group = groupSearchList?[indexPath.row] else { return UITableViewCell() }
+    cell.configure(with: group)
     return cell
   }
 }
 
-extension UserGroupController {
-  
-  // SearchBar
-  func searchBar(_ groupSearchBar: UISearchBar, textDidChange searchText: String) {
-    
-    // очищаем фильтр, если запрос пустой
-    guard !searchText.isEmpty else {
-      groupSearchList = groupList
-      tableView.reloadData()
-      return
-    }
-    
-    // фильтр по lowercase
-    groupSearchList = groupList.filter({ group -> Bool in
-      return group.name.lowercased().contains(searchText.lowercased())
-    })
-    tableView.reloadData()
-    
-  }
-  
-}
+// // TODO: fix Searchbar
+//extension UserGroupController {
+//
+//  // SearchBar
+//  func searchBar(_ groupSearchBar: UISearchBar, textDidChange searchText: String) {
+//
+//    // очищаем фильтр, если запрос пустой
+//    guard !searchText.isEmpty else {
+//      groupSearchList = groupList
+//      tableView.reloadData()
+//      return
+//    }
+//
+//    // фильтр по lowercase
+//    groupSearchList = groupList.filter({ group -> Bool in
+//      return group.name.lowercased().contains(searchText.lowercased())
+//    })
+//    tableView.reloadData()
+//
+//  }
+//
+//}
