@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A02514EF22035F1D00884E18 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02514EE22035F1D00884E18 /* GalleryViewCell.swift */; };
 		A02514F122035F3F00884E18 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02514F022035F3F00884E18 /* GalleryViewController.swift */; };
+		A05E35672225E2A80012A49B /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05E35662225E2A80012A49B /* RealmProvider.swift */; };
 		A085AEA821D21B04008F6E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085AEA721D21B04008F6E4F /* AppDelegate.swift */; };
 		A085AEAD21D21B04008F6E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A085AEAB21D21B04008F6E4F /* Main.storyboard */; };
 		A085AEAF21D21B05008F6E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A085AEAE21D21B05008F6E4F /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		5BAAB0064400A52312EC1F21 /* Pods-VK_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK_app.release.xcconfig"; path = "Target Support Files/Pods-VK_app/Pods-VK_app.release.xcconfig"; sourceTree = "<group>"; };
 		A02514EE22035F1D00884E18 /* GalleryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
 		A02514F022035F3F00884E18 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		A05E35662225E2A80012A49B /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		A085AEA421D21B04008F6E4F /* VK_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A085AEA721D21B04008F6E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A085AEAC21D21B04008F6E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				A0B7042B220F93CA009FCCF2 /* Session.swift */,
 				A0B7042D220F950E009FCCF2 /* VKLoginController.swift */,
 				A0AF9D5E220FA1500087C939 /* VKService.swift */,
+				A05E35662225E2A80012A49B /* RealmProvider.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VK_app/Pods-VK_app-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/KeyPathKit/KeyPathKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -326,6 +330,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeyPathKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -345,6 +350,7 @@
 			files = (
 				A08D67DA21D590F400B0943B /* FriendImageController.swift in Sources */,
 				A02514F122035F3F00884E18 /* GalleryViewController.swift in Sources */,
+				A05E35672225E2A80012A49B /* RealmProvider.swift in Sources */,
 				A0ABDA9F22079FF900F83B26 /* CustomInteractiveTransition.swift in Sources */,
 				A0D994F622176F3C00F7256B /* FriendPhoto.swift in Sources */,
 				A08D67E621D611A400B0943B /* Topology.swift in Sources */,

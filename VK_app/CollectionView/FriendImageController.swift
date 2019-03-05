@@ -41,11 +41,13 @@ class FriendImageController: UICollectionViewController {
     if let realm = try? Realm(configuration: config) {
       
       // Delete old photo links to avoid dublicate
-      try? realm.write {
-        realm.delete(realm.objects(FriendPhoto.self))
-      }
+//      try? realm.write {
+//        realm.delete(realm.objects(FriendPhoto.self))
+//      }
       
-      friendPhoto = realm.objects(FriendPhoto.self)
+      friendPhoto = realm.objects(FriendPhoto.self).filter("owner_id == %@", selectedFriendId)
+      //friendPhoto = realm.objects(FriendPhoto.self).filter("friend.id == %@", selectedFriendId)
+      //friendPhoto = realm.objects(FriendPhoto.self)
     }
 
     

@@ -17,6 +17,7 @@ class Friend: Object {
   dynamic var first_name: String = ""
   dynamic var last_name: String = ""
   dynamic var photo: String = ""
+  var friendPhoto = List<FriendPhoto>()
   
   convenience init(json: JSON) {
     self.init()
