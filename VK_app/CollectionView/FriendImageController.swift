@@ -17,6 +17,8 @@ class FriendImageController: UICollectionViewController {
   var selectedFriendId: Int = 0
   var friendPhoto: Results<FriendPhoto>?
   
+  var notificationToken: NotificationToken?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // VKService Friend Photo
@@ -48,6 +50,20 @@ class FriendImageController: UICollectionViewController {
       friendPhoto = realm.objects(FriendPhoto.self).filter("owner_id == %@", selectedFriendId)
       //friendPhoto = realm.objects(FriendPhoto.self).filter("friend.id == %@", selectedFriendId)
       //friendPhoto = realm.objects(FriendPhoto.self)
+      
+      // Realm Notification Friend Gallery
+      notificationToken = friendPhoto?.observe{ changes in
+        switch changes {
+        case .initial(_):
+          print("Friend Gallery")
+        case .update( _, _, _, _):
+          self.collectionView.reloadData()
+        case .error(let error):
+          print(error.localizedDescription)
+        }
+      }
+      
+      
     }
 
     

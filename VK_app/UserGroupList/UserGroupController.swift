@@ -16,6 +16,8 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
   private var groupList: Results<Group>?
   private var groupSearchList: Results<Group>? // массив для поиска
   
+  var notificationToken: NotificationToken?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -26,6 +28,19 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
     if let realm = try? Realm(configuration: config) {
       groupList = realm.objects(Group.self)
     }
+    
+    // Realm Notification Group List
+    notificationToken = groupList?.observe{ changes in
+      switch changes {
+      case .initial(_):
+        print("Group List")
+      case .update( _, _, _, _):
+        self.tableView.reloadData()
+      case .error(let error):
+        print(error.localizedDescription)
+      }
+    }
+    
     
   }
   

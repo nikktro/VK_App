@@ -17,6 +17,8 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
   var friendList: Results<Friend>?
   var searchFriendList: Results<Friend>? // Массив для поиска
   
+  var notificationToken: NotificationToken?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -46,6 +48,20 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
     let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     if let realm = try? Realm(configuration: config) {
       friendList = realm.objects(Friend.self)
+      
+      // Realm Notification Friend List
+      notificationToken = friendList?.observe{ changes in
+        switch changes {
+        case .initial(_):
+          print("Friend List")
+        case .update( _, _, _, _):
+          self.tableView.reloadData()
+        case .error(let error):
+          print(error.localizedDescription)
+        }
+      }
+      
+      
     }
     
   }
