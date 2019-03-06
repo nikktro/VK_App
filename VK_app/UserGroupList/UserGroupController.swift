@@ -28,20 +28,28 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
     if let realm = try? Realm(configuration: config) {
       groupList = realm.objects(Group.self)
     }
+  }
+  
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     
     // Realm Notification Group List
     notificationToken = groupList?.observe{ changes in
       switch changes {
       case .initial(_):
-        print("Group List")
+        break
       case .update( _, _, _, _):
         self.tableView.reloadData()
       case .error(let error):
         print(error.localizedDescription)
       }
     }
-    
-    
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    notificationToken?.invalidate()
   }
   
   

@@ -48,22 +48,29 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
     let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     if let realm = try? Realm(configuration: config) {
       friendList = realm.objects(Friend.self)
-      
-      // Realm Notification Friend List
-      notificationToken = friendList?.observe{ changes in
-        switch changes {
-        case .initial(_):
-          print("Friend List")
-        case .update( _, _, _, _):
-          self.tableView.reloadData()
-        case .error(let error):
-          print(error.localizedDescription)
-        }
-      }
-      
-      
     }
+  }
+  
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     
+    // Realm Notification Friend List
+    notificationToken = friendList?.observe{ changes in
+      switch changes {
+      case .initial(_):
+        break
+      case .update( _, _, _, _):
+        self.tableView.reloadData()
+      case .error(let error):
+        print(error.localizedDescription)
+      }
+    }
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    notificationToken?.invalidate()
   }
   
   

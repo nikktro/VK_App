@@ -41,32 +41,31 @@ class FriendImageController: UICollectionViewController {
     
     let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     if let realm = try? Realm(configuration: config) {
-      
-      // Delete old photo links to avoid dublicate
-//      try? realm.write {
-//        realm.delete(realm.objects(FriendPhoto.self))
-//      }
-      
       friendPhoto = realm.objects(FriendPhoto.self).filter("owner_id == %@", selectedFriendId)
       //friendPhoto = realm.objects(FriendPhoto.self).filter("friend.id == %@", selectedFriendId)
-      //friendPhoto = realm.objects(FriendPhoto.self)
-      
-      // Realm Notification Friend Gallery
-      notificationToken = friendPhoto?.observe{ changes in
-        switch changes {
-        case .initial(_):
-          print("Friend Gallery")
-        case .update( _, _, _, _):
-          self.collectionView.reloadData()
-        case .error(let error):
-          print(error.localizedDescription)
-        }
-      }
-      
-      
     }
-
+  }
+  
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     
+    // Realm Notification Friend Gallery
+    notificationToken = friendPhoto?.observe{ changes in
+      switch changes {
+      case .initial(_):
+        break
+      case .update( _, _, _, _):
+        self.collectionView.reloadData()
+      case .error(let error):
+        print(error.localizedDescription)
+      }
+    }
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    notificationToken?.invalidate()
   }
   
   
