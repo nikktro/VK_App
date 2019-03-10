@@ -16,6 +16,8 @@ class FriendImageController: UICollectionViewController {
   
   var selectedFriendId: Int = 0
   var friendPhoto: Results<FriendPhoto>?
+  let realm = try! Realm()
+  //lazy var friendPhoto: Results<FriendPhoto>? = try? realm.objects(FriendPhoto.self).filter("ANY friend.id ==%@", selectedFriendId)
   
   var notificationToken: NotificationToken?
   
@@ -24,13 +26,22 @@ class FriendImageController: UICollectionViewController {
     // VKService Friend Photo
     let vkService = VKService()
 
-    vkService.apiUserFriendPhoto(for: selectedFriendId) { [weak self] friendPhotoJSON, error in
+    vkService.apiUserFriendPhoto(for: selectedFriendId) { [weak self] friendPhoto, error in
       if let error = error {
         // TODO: правильно через extenssion выдавать пользователю alert
         print(error.localizedDescription)
         return
-      } else if let value = friendPhotoJSON, let self = self {
-        RealmProvider.save(items: value)
+      } else if let friendPhoto = friendPhoto, let self = self {
+        
+        let realm = try! Realm()
+        let user = realm.object(ofType: Friend.self, forPrimaryKey: self.selectedFriendId)
+        
+        try? realm.write {
+          realm.add(friendPhoto, update: true)
+          user?.friendPhoto.append(objectsIn: friendPhoto)
+        }
+        
+        //RealmProvider.save(items: friendPhoto)
 
         // сортировка и обновление интерфейса в главном потоке
         DispatchQueue.main.async {
@@ -41,8 +52,8 @@ class FriendImageController: UICollectionViewController {
     
     let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     if let realm = try? Realm(configuration: config) {
-      friendPhoto = realm.objects(FriendPhoto.self).filter("owner_id == %@", selectedFriendId)
-      //friendPhoto = realm.objects(FriendPhoto.self).filter("friend.id == %@", selectedFriendId)
+      //friendPhoto = realm.objects(FriendPhoto.self).filter("owner_id == %@", selectedFriendId)
+      friendPhoto = realm.objects(FriendPhoto.self).filter("ANY friend.id == %@", selectedFriendId)
     }
   }
   
@@ -68,18 +79,20 @@ class FriendImageController: UICollectionViewController {
     notificationToken?.invalidate()
   }
   
-  
+}
+
+
+// Collection View Friend
+extension FriendImageController {
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
     // Будет отображаться одна секция
     return 1
   }
   
-  
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     // Количество Item определяет размер массива
     return friendPhoto?.count ?? 0
   }
-  
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     // создаем экземпляр cell для отображения в Collection Reusable View с id "userPhoto", приводим к FriendImageCell
@@ -91,6 +104,8 @@ class FriendImageController: UICollectionViewController {
   
 }
 
+
+// Segue to Gallery
 extension FriendImageController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "FriendPhotoGallery" {
