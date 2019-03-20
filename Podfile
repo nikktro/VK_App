@@ -10,5 +10,6 @@ target 'VK_app' do
   pod 'SwiftyJSON'
   pod 'Kingfisher'
   pod 'RealmSwift'
+  pod 'KeyPathKit'
 
 end

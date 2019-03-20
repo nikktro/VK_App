@@ -17,12 +17,12 @@ class FriendImageController: UICollectionViewController {
   var selectedFriendId: Int = 0
   var friendPhoto: Results<FriendPhoto>?
   let realm = try! Realm()
-  //lazy var friendPhoto: Results<FriendPhoto>? = try? realm.objects(FriendPhoto.self).filter("ANY friend.id ==%@", selectedFriendId)
   
   var notificationToken: NotificationToken?
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     // VKService Friend Photo
     let vkService = VKService()
 
@@ -36,12 +36,12 @@ class FriendImageController: UICollectionViewController {
         let realm = try! Realm()
         let user = realm.object(ofType: Friend.self, forPrimaryKey: self.selectedFriendId)
         
+        // TODO: Generic
         try? realm.write {
           realm.add(friendPhoto, update: true)
           user?.friendPhoto.append(objectsIn: friendPhoto)
         }
         
-        //RealmProvider.save(items: friendPhoto)
 
         // сортировка и обновление интерфейса в главном потоке
         DispatchQueue.main.async {
@@ -52,7 +52,6 @@ class FriendImageController: UICollectionViewController {
     
     let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     if let realm = try? Realm(configuration: config) {
-      //friendPhoto = realm.objects(FriendPhoto.self).filter("owner_id == %@", selectedFriendId)
       friendPhoto = realm.objects(FriendPhoto.self).filter("ANY friend.id == %@", selectedFriendId)
     }
   }
