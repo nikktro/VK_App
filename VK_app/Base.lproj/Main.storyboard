@@ -387,25 +387,35 @@
                                                 <constraint firstAttribute="height" priority="999" constant="44" id="uhW-pl-yOM"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNQ-lK-Xqe">
-                                            <rect key="frame" x="64" y="11" width="299" height="27.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNQ-lK-Xqe">
+                                            <rect key="frame" x="62" y="11" width="45" height="27.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw6-Rk-MdI">
+                                            <rect key="frame" x="112" y="11" width="70.5" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="dB8-MS-haz" firstAttribute="leading" secondItem="Wbe-1a-bUp" secondAttribute="leading" constant="8" id="36W-a1-cKL"/>
+                                        <constraint firstItem="uw6-Rk-MdI" firstAttribute="top" secondItem="Wbe-1a-bUp" secondAttribute="topMargin" id="AMh-lu-M5G"/>
                                         <constraint firstItem="nNQ-lK-Xqe" firstAttribute="centerY" secondItem="Wbe-1a-bUp" secondAttribute="centerY" id="Afb-1L-osB"/>
-                                        <constraint firstItem="nNQ-lK-Xqe" firstAttribute="leading" secondItem="dB8-MS-haz" secondAttribute="trailing" constant="12" id="Blc-t0-puT"/>
+                                        <constraint firstItem="nNQ-lK-Xqe" firstAttribute="leading" secondItem="dB8-MS-haz" secondAttribute="trailing" constant="10" id="Blc-t0-puT"/>
+                                        <constraint firstItem="uw6-Rk-MdI" firstAttribute="centerY" secondItem="Wbe-1a-bUp" secondAttribute="centerY" id="PM0-Zw-ipO"/>
                                         <constraint firstItem="nNQ-lK-Xqe" firstAttribute="top" secondItem="Wbe-1a-bUp" secondAttribute="topMargin" id="Tbb-II-ALk"/>
-                                        <constraint firstAttribute="trailing" secondItem="nNQ-lK-Xqe" secondAttribute="trailing" constant="12" id="XiW-fQ-uYT"/>
+                                        <constraint firstItem="uw6-Rk-MdI" firstAttribute="leading" secondItem="nNQ-lK-Xqe" secondAttribute="trailing" constant="5" id="ads-z8-l6M"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uw6-Rk-MdI" secondAttribute="trailing" constant="12" id="ag9-L6-gcD"/>
                                         <constraint firstItem="dB8-MS-haz" firstAttribute="centerY" secondItem="Wbe-1a-bUp" secondAttribute="centerY" id="uty-ce-pJQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="userFriendImage" destination="dB8-MS-haz" id="pl5-BL-Q3F"/>
-                                    <outlet property="userFriendLabel" destination="nNQ-lK-Xqe" id="SOv-N2-CDn"/>
+                                    <outlet property="friendImageAvatar" destination="dB8-MS-haz" id="pl5-BL-Q3F"/>
+                                    <outlet property="friendNameLabel" destination="nNQ-lK-Xqe" id="SOv-N2-CDn"/>
+                                    <outlet property="friendSurnameLabel" destination="uw6-Rk-MdI" id="L2w-Fk-Usd"/>
                                     <segue destination="I9M-W3-60I" kind="show" identifier="FriendInfo" id="PqH-Mf-KMB"/>
                                 </connections>
                             </tableViewCell>
