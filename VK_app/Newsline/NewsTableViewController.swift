@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NewsTableViewController: UITableViewController {
 
@@ -15,13 +16,38 @@ class NewsTableViewController: UITableViewController {
     News(owner_id: 1, titleImage: UIImage(named: "news_bbc"), titleName: "News Title", titleTime: "today at 12:00", contentText: "Some news", contentImage: UIImage(named: "news_01"), commentCount: 12, shareCount: 55, viewCount: 103, likeCount: 321),
     News(owner_id: 1, titleImage: UIImage(named: "news_bbc"), titleName: "News Title", titleTime: "today at 13:00", contentText: "#math #books", contentImage: UIImage(named: "news_02"), commentCount: 8, shareCount: 43, viewCount: 112, likeCount: 544)
   ]
+  
+  private var newsfeedList: Results<Newsfeed>?
     
   
-    override func viewDidLoad() {
-      super.viewDidLoad()
-        self.tableView.estimatedRowHeight = 80
-        self.tableView.rowHeight = UITableView.automaticDimension
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.tableView.estimatedRowHeight = 80
+    self.tableView.rowHeight = UITableView.automaticDimension
+  }
+  
+  // TODO: Notification
+  override func viewDidAppear(_ animated: Bool) {
+    
+    // Запрос к API Newsfeed
+    let vkService = VKService()
+    
+    vkService.apiNewsfeed() { [weak self] newsfeed, error in
+      
+      if let error = error {
+        // TODO: правильно через extenssion выдавать пользователю alert
+        print(error.localizedDescription)
+        return
+      } else if let newsfeed = newsfeed, let self = self {
+        RealmProvider.save(items: newsfeed)
+        
+        // обновление интерфейса переводим в главный поток
+        DispatchQueue.main.async {
+          self.tableView.reloadData()
+        }
+      }
     }
+  }
 
     // MARK: - Table view data source
 
