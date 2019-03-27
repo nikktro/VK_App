@@ -45,7 +45,7 @@ class NewsTableViewController: UITableViewController {
           // чтение данных из Realm
           let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
           if let realm = try? Realm(configuration: config) {
-            self.newsfeedList = realm.objects(Newsfeed.self)
+            self.newsfeedList = realm.objects(Newsfeed.self).sorted(byKeyPath: "date", ascending: false)
           }
           // Обновление данных
           self.tableView.reloadData()
