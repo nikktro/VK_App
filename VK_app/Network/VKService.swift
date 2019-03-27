@@ -158,7 +158,7 @@ class VKService {
       case .success(let value):
         let json = JSON(value)
         let newsfeed = json["response"]["items"].arrayValue.map { Newsfeed(json: $0) }
-        newsfeed.forEach { print($0) }
+        //newsfeed.forEach { print($0) }
         completion?(newsfeed, nil)
         
       case .failure(let error):
