@@ -95,16 +95,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A01401A3223507E200F8135E /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A0C382B021D582FB00FA3250 /* UserFriendList */,
-				A08D67CF21D5886700B0943B /* UserGroupList */,
-				A08D67D821D5907900B0943B /* CollectionView */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		A08064F12247F0E6001C6A15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +129,9 @@
 			children = (
 				A08064F12247F0E6001C6A15 /* Model */,
 				A0AF9D5D220FA0780087C939 /* Network */,
-				A01401A3223507E200F8135E /* ViewControllers */,
+				A0C382B021D582FB00FA3250 /* UserFriendList */,
+				A08D67CF21D5886700B0943B /* UserGroupList */,
+				A08D67D821D5907900B0943B /* CollectionView */,
 				A0F4D22021ED40B40041CB05 /* Newsline */,
 				A0D376C521F978460096C5A0 /* Animation */,
 				A085AEAB21D21B04008F6E4F /* Main.storyboard */,
