@@ -14,9 +14,10 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
   
   @IBOutlet weak var searchBar: UISearchBar!
   
-  //var friendList = [Friend]()
   var friendList: Results<Friend>?
   var searchFriendList: Results<Friend>? // Массив для поиска
+  
+  var notificationToken: NotificationToken?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,9 +34,7 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
         print(error.localizedDescription)
         return
       } else if let friends = friendListJSON, let self = self {
-        
         RealmProvider.save(items: friends)
-        //self.friendList = friends
         
         // сортировка и обновление интерфейса в главном потоке
         DispatchQueue.main.async {
@@ -50,7 +49,28 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
     if let realm = try? Realm(configuration: config) {
       friendList = realm.objects(Friend.self)
     }
+  }
+  
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     
+    // Realm Notification Friend List
+    notificationToken = friendList?.observe{ changes in
+      switch changes {
+      case .initial(_):
+        break
+      case .update( _, _, _, _):
+        self.tableView.reloadData()
+      case .error(let error):
+        print(error.localizedDescription)
+      }
+    }
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    notificationToken?.invalidate()
   }
   
   
