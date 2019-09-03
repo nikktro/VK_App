@@ -27,6 +27,7 @@
 		A0AF3E4921F6C28F007B25C0 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF3E4821F6C28F007B25C0 /* NewsTableViewCell.swift */; };
 		A0AF9D5F220FA1500087C939 /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF9D5E220FA1500087C939 /* VKService.swift */; };
 		A0B65B96231F0AF100EA573A /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B65B95231F0AF100EA573A /* RealmProvider.swift */; };
+		A0B65B9E231F121500EA573A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A0B65B9D231F121500EA573A /* .gitignore */; };
 		A0B7042C220F93CA009FCCF2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B7042B220F93CA009FCCF2 /* Session.swift */; };
 		A0B7042E220F950E009FCCF2 /* VKLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B7042D220F950E009FCCF2 /* VKLoginController.swift */; };
 		A0D376C721F9786F0096C5A0 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D376C621F9786F0096C5A0 /* ProgressBar.swift */; };
@@ -62,6 +63,7 @@
 		A0AF3E4821F6C28F007B25C0 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		A0AF9D5E220FA1500087C939 /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
 		A0B65B95231F0AF100EA573A /* RealmProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
+		A0B65B9D231F121500EA573A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A0B7042B220F93CA009FCCF2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		A0B7042D220F950E009FCCF2 /* VKLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginController.swift; sourceTree = "<group>"; };
 		A0D376C621F9786F0096C5A0 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		A085AEA621D21B04008F6E4F /* VK_app */ = {
 			isa = PBXGroup;
 			children = (
+				A0B65B9C231F11F900EA573A /* Git */,
 				A0D994EC221375D800F7256B /* DataStructure */,
 				A0AF9D5D220FA0780087C939 /* Network */,
 				A0D376C521F978460096C5A0 /* Animation */,
@@ -170,6 +173,14 @@
 				A0AF9D5E220FA1500087C939 /* VKService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A0B65B9C231F11F900EA573A /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				A0B65B9D231F121500EA573A /* .gitignore */,
+			);
+			path = Git;
 			sourceTree = "<group>";
 		};
 		A0C382B021D582FB00FA3250 /* UserFriendList */ = {
@@ -279,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B65B9E231F121500EA573A /* .gitignore in Resources */,
 				A085AEB221D21B05008F6E4F /* LaunchScreen.storyboard in Resources */,
 				A085AEAF21D21B05008F6E4F /* Assets.xcassets in Resources */,
 				A085AEAD21D21B04008F6E4F /* Main.storyboard in Resources */,
