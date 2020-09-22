@@ -38,7 +38,7 @@ class FriendImageController: UICollectionViewController {
         
         // TODO: Generic
         try? realm.write {
-          realm.add(friendPhoto, update: true)
+            realm.add(friendPhoto, update: .all)
           user?.friendPhoto.append(objectsIn: friendPhoto)
         }
         

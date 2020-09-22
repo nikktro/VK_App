@@ -62,7 +62,7 @@ class VKService {
       "v": apiVersion
     ]
     
-    Alamofire.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
+    AF.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
       
       switch response.result {
         
@@ -90,7 +90,7 @@ class VKService {
       "v": apiVersion
     ]
     
-    Alamofire.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
+    AF.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
       
       switch response.result {
         
@@ -120,7 +120,7 @@ class VKService {
       "v": apiVersion
     ]
     
-    Alamofire.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
+    AF.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
       
       switch response.result {
         
@@ -151,7 +151,7 @@ class VKService {
       "v": apiVersion
     ]
     
-    Alamofire.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
+    AF.request(apiScheme + "://" + apiHost + path, method: .get, parameters: params).responseJSON { response in
       
       switch response.result {
         
