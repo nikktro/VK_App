@@ -17,7 +17,7 @@ class RealmProvider {
     do {
       let realm = try Realm(configuration: config)
       try realm.write {
-        realm.add(items, update: .all)
+        realm.add(items, update: update)
       }
       
     } catch {
