@@ -18,6 +18,9 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
   var searchFriendList: Results<Friend>? // Массив для поиска
   
   var notificationToken: NotificationToken?
+    
+  private let viewModelFactory = UserFriendViewModelFactory()
+  private var viewModels: [UserFriendViewModel] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,6 +38,7 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
         return
       } else if let friends = friendListJSON, let self = self {
         RealmProvider.save(items: friends)
+        self.viewModels = self.viewModelFactory.constructViewModels(from: friends)
         
         // сортировка и обновление интерфейса в главном потоке
         DispatchQueue.main.async {
@@ -73,20 +77,21 @@ class UserFriendController: UITableViewController, UISearchBarDelegate {
     notificationToken?.invalidate()
   }
   
-  
+}
+
+extension UserFriendController {
+    
   // numberOfRowsInSection
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return searchFriendList?.count ?? 0
+    return viewModels.count
   }
   
   
   // dequeueReusableCell
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserFriends", for: indexPath) as? UserFriendCell,
-      let friend = searchFriendList?[indexPath.row] else { return UITableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserFriends", for: indexPath) as? UserFriendCell else { return UITableViewCell() }
+    cell.configure(with: viewModels[indexPath.row])
     
-    cell.configure(with: friend)
-
     return cell
   }
   

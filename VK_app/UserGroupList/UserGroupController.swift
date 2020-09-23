@@ -18,6 +18,9 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
   
   var notificationToken: NotificationToken?
   
+  private let viewModelFactory = UserGroupViewModelFactory()
+  private var viewModels: [UserGroupViewModel] = []
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -65,6 +68,7 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
         return
       } else if let groups = groupListJSON, let self = self {
         RealmProvider.save(items: groups)
+        self.viewModels = self.viewModelFactory.constructViewModels(from: groups)
         
         // обновление интерфейса переводим в главный поток
         DispatchQueue.main.async {
@@ -75,7 +79,10 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
     }
   }
   
-  
+}
+
+extension UserGroupController {
+    
   override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
@@ -85,9 +92,9 @@ class UserGroupController: UITableViewController, UISearchBarDelegate {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroup", for: indexPath) as? UserGroupCell,
-      let group = groupSearchList?[indexPath.row] else { return UITableViewCell() }
-    cell.configure(with: group)
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroup", for: indexPath) as? UserGroupCell else { return UITableViewCell() }
+    cell.configure(with: viewModels[indexPath.row])
+    
     return cell
   }
 }

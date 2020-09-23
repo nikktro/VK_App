@@ -22,14 +22,14 @@ class UserFriendCell: UITableViewCell {
   @IBOutlet weak var friendNameLabel: UILabel! {
     didSet {
       friendNameLabel.textColor = UIColor.black
-      friendNameLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+      friendNameLabel.font = UIFont.regular
     }
   }
 
   @IBOutlet weak var friendSurnameLabel: UILabel! {
     didSet {
       friendSurnameLabel.textColor = UIColor.black
-      friendSurnameLabel.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        friendSurnameLabel.font = UIFont.medium
     }
   }
   
@@ -44,10 +44,10 @@ class UserFriendCell: UITableViewCell {
   
   
   // заполнение аватарки и имени
-  public func configure(with friendList: Friend) {
-    friendNameLabel.text = friendList.first_name
-    friendSurnameLabel.text = friendList.last_name
-    friendImageAvatar.kf.setImage(with: URL(string: friendList.photo))
+  public func configure(with viewModel: UserFriendViewModel) {
+    friendNameLabel.text = viewModel.friendName
+    friendSurnameLabel.text = viewModel.friendSurname
+    friendImageAvatar.kf.setImage(with: URL(string: viewModel.friendImageAvatar))
   }
   
 }

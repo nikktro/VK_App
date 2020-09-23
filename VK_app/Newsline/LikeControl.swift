@@ -23,7 +23,7 @@ import UIKit
     let label = UILabel()
     label.textColor = UIColor.black
     label.textAlignment = .center
-    label.font = UIFont.systemFont(ofSize: 17.0)
+    label.font = UIFont.regular
     label.text = String(counter)
     return label
   }()
@@ -32,7 +32,7 @@ import UIKit
     didSet {
       likeLabel.text = String(counter)
       if oldValue == false {
-        likeLabel.textColor = UIColor.red
+        likeLabel.textColor = UIColor.random
       } else {
         likeLabel.textColor = UIColor.black
       }

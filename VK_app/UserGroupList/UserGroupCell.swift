@@ -20,9 +20,9 @@ class UserGroupCell: UITableViewCell {
   }
   @IBOutlet weak var userGroupLabel: UILabel!
   
-  public func configure(with groupList: Group) {
-    userGroupLabel.text = groupList.name
-    userGroupImage.kf.setImage(with: URL(string: groupList.photo))
+  public func configure(with viewModel: UserGroupViewModel) {
+    userGroupLabel.text = viewModel.userGroup
+    userGroupImage.kf.setImage(with: URL(string: viewModel.userGroupImage))
   }
   
 }
